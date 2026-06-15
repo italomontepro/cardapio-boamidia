@@ -30,7 +30,13 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. A restaurant admin user can log in to a restaurant admin area, scoped only to their own restaurant
   3. Logging in as one restaurant's admin and querying another restaurant's data returns nothing (cross-tenant isolation verified)
   4. Database schema for restaurants, units, categories, products, availability, and admin users exists with RLS enabled on every table
-**Plans**: TBD
+**Plans**: 5 plans
+Plans:
+- [ ] 01-01-PLAN.md — Scaffold Next.js 16 app, install deps, provision Supabase project, configure Drizzle (Session/Transaction mode)
+- [ ] 01-02-PLAN.md — Define Drizzle schema for all 6 tables and apply initial migration
+- [ ] 01-03-PLAN.md — Write and apply RLS policy migration (helper functions + policies for all 6 tables)
+- [ ] 01-04-PLAN.md — Implement @supabase/ssr clients, session middleware, and seed script (1 super admin + 2 restaurant admins)
+- [ ] 01-05-PLAN.md — Implement login/logout, /admin and /painel landing pages, and verify-auth script
 
 ### Phase 2: Platform Super-Admin — Restaurant Provisioning
 **Goal**: The platform super-admin can fully manage the roster of restaurant tenants, including provisioning each restaurant's first admin user.
