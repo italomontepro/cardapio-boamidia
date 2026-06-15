@@ -12,7 +12,7 @@ This roadmap delivers a multi-tenant SaaS digital menu platform end-to-end, foll
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation — Data Model, RLS & Auth Roles** - Multi-tenant schema, Row Level Security, and admin login for both roles is in place and verified secure
+- [x] **Phase 1: Foundation — Data Model, RLS & Auth Roles** - Multi-tenant schema, Row Level Security, and admin login for both roles is in place and verified secure (completed 2026-06-15)
 - [ ] **Phase 2: Platform Super-Admin — Restaurant Provisioning** - Super admin can log in and fully manage the list of restaurants on the platform
 - [ ] **Phase 3: Restaurant Admin — Units, Catalog & Photos** - Restaurant admin can log in and build out their units, categories, products, and product photos
 - [ ] **Phase 4: Per-Unit Availability Management** - Restaurant admin can control which products are available at which units
@@ -36,7 +36,7 @@ Plans:
 - [x] 01-02-PLAN.md — Define Drizzle schema for all 6 tables and apply initial migration
 - [x] 01-03-PLAN.md — Write and apply RLS policy migration (helper functions + policies for all 6 tables)
 - [x] 01-04-PLAN.md — Implement @supabase/ssr clients, session middleware, and seed script (1 super admin + 2 restaurant admins)
-- [ ] 01-05-PLAN.md — Implement login/logout, /admin and /painel landing pages, and verify-auth script
+- [x] 01-05-PLAN.md — Implement login/logout, /admin and /painel landing pages, and verify-auth script
 
 ### Phase 2: Platform Super-Admin — Restaurant Provisioning
 **Goal**: The platform super-admin can fully manage the roster of restaurant tenants, including provisioning each restaurant's first admin user.
@@ -108,7 +108,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation — Data Model, RLS & Auth Roles | 2/5 | In Progress|  |
+| 1. Foundation — Data Model, RLS & Auth Roles | 5/5 | Complete   | 2026-06-15 |
 | 2. Platform Super-Admin — Restaurant Provisioning | 0/TBD | Not started | - |
 | 3. Restaurant Admin — Units, Catalog & Photos | 0/TBD | Not started | - |
 | 4. Per-Unit Availability Management | 0/TBD | Not started | - |
