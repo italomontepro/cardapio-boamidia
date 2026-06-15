@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-06-15T19:50:44.868Z",
+  "phase": "01",
+  "phase_name": "foundation-data-model-rls-auth-roles",
+  "phase_dir": ".planning/phases/01-foundation-data-model-rls-auth-roles",
+  "plan": "01-01",
+  "task": 3,
+  "total_tasks": 3,
+  "status": "paused",
+  "completed_tasks": [
+    {"id": 1, "name": "Scaffold Next.js 16 app and install full dependency set", "status": "done", "commit": "20efb01"},
+    {"id": 2, "name": "Create Supabase project and obtain credentials", "status": "done", "commit": "b2e614b"},
+    {"id": 3, "name": "Write .env/.env.example, drizzle.config.ts, src/db/index.ts, verify DB connectivity", "status": "done", "commit": "b2e614b"}
+  ],
+  "remaining_tasks": [
+    {"id": "01-02", "name": "Define Drizzle schema for 6 tables + apply initial migration", "status": "not_started", "wave": 2},
+    {"id": "01-03", "name": "RLS policies migration (helper functions + CREATE POLICY for all 6 tables)", "status": "not_started", "wave": 3},
+    {"id": "01-04", "name": "@supabase/ssr clients + middleware + seed script", "status": "not_started", "wave": 3},
+    {"id": "01-05", "name": "Login/logout Server Actions + /admin + /painel pages + verify-auth script", "status": "not_started", "wave": 4}
+  ],
+  "blockers": [],
+  "human_actions_pending": [],
+  "decisions": [
+    {"decision": "Supabase project 'cardapio-boamidia' provisioned with 'Automatically expose new tables' enabled and 'Enable automatic RLS' disabled", "rationale": "01-03's anon-key verification expects empty array (not permission error), requiring base PostgREST grants; RLS is enabled explicitly via versioned migration in 01-03 instead of an unmanaged Supabase event trigger", "phase": "01"},
+    {"decision": "DATABASE_URL uses Session pooler (port 5432) for drizzle-kit migrations; DATABASE_URL_RUNTIME uses Transaction pooler (port 6543, prepare:false) for app runtime queries", "rationale": "Per D-11 / STACK.md — required split for Supabase pooler compatibility", "phase": "01"}
+  ],
+  "uncommitted_files": [],
+  "next_action": "Run /gsd:execute-phase 1 — it will detect 01-01-SUMMARY.md exists and resume at Wave 2 (plan 01-02: Drizzle schema for restaurants/units/categories/products/product_availability/admin_users)",
+  "context_notes": "Wave 1 (01-01) executed in a worktree, fast-forward merged into main, worktree cleaned up. Branching strategy is 'none' (work directly on main). Remaining waves: Wave 2 (01-02, sequential), Wave 3 (01-03 + 01-04, parallel), Wave 4 (01-05, has human-verify checkpoint at the end for manual browser confirmation of login/redirect/logout flow). Plan checker noted 01-VALIDATION.md has stale TBD placeholders — non-blocking, can be ignored or updated during execution."
+}
