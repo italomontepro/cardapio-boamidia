@@ -12,7 +12,8 @@ Um cliente final consegue acessar o link de um restaurante, escolher a unidade, 
 
 ### Validated
 
-(None yet — ship to validate)
+- [x] Admin geral faz login em painel próprio — Validated in Phase 1: Foundation — Data Model, RLS & Auth Roles (AUTH-01)
+- [x] Admin do restaurante faz login em painel próprio, restrito ao seu restaurante — Validated in Phase 1: Foundation — Data Model, RLS & Auth Roles (AUTH-02, AUTH-03 — isolamento entre tenants confirmado via RLS)
 
 ### Active
 
@@ -20,9 +21,7 @@ Um cliente final consegue acessar o link de um restaurante, escolher a unidade, 
 - [ ] Cliente visualiza o cardápio da unidade escolhida (categorias e produtos com nome, descrição, foto, preço), mostrando apenas itens disponíveis naquela unidade
 - [ ] Cliente monta um pedido (carrinho) com itens, quantidades e observações
 - [ ] Cliente finaliza o pedido e o sistema gera uma mensagem formatada enviada via WhatsApp (wa.me) para o número da unidade escolhida
-- [ ] Admin geral faz login em painel próprio
 - [ ] Admin geral faz CRUD de restaurantes (criar, editar, remover, ativar/desativar)
-- [ ] Admin do restaurante faz login em painel próprio, restrito ao seu restaurante
 - [ ] Admin do restaurante faz CRUD de categorias e produtos (nome, descrição, preço)
 - [ ] Admin do restaurante faz upload de fotos dos produtos
 - [ ] Admin do restaurante faz CRUD de unidades/filiais (nome, endereço, número de WhatsApp)
@@ -55,7 +54,7 @@ Um cliente final consegue acessar o link de um restaurante, escolher a unidade, 
 | Link único leva à seleção de unidade | Mantém o fluxo genérico e escalável para qualquer restaurante/cliente da plataforma | — Pending |
 | Pedido enviado via WhatsApp (wa.me), sem persistência no v1 | Simplicidade máxima para o MVP; evita complexidade de gestão de pedidos antes de validar o core | — Pending |
 | Upload de imagem para fotos de produtos | Melhor experiência para o admin do restaurante vs. colar URLs | — Pending |
-| Dois níveis de admin (geral da plataforma e por restaurante) | Reflete o modelo de negócio SaaS: plataforma gerencia clientes, cliente gerencia seu próprio cardápio | — Pending |
+| Dois níveis de admin (geral da plataforma e por restaurante) | Reflete o modelo de negócio SaaS: plataforma gerencia clientes, cliente gerencia seu próprio cardápio | Validated in Phase 1 — RLS + roles implementados, AUTH-01/02/03 confirmados |
 
 ## Evolution
 
@@ -75,4 +74,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-15 after initialization*
+*Last updated: 2026-06-15 after Phase 1 completion*
