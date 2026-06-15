@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-02-PLAN.md
-last_updated: "2026-06-15T20:30:00.000Z"
-last_activity: 2026-06-15 — Completed 01-02 (Drizzle schema for all 6 tables + initial migration applied to live Supabase Postgres)
+stopped_at: Completed 01-03-PLAN.md
+last_updated: "2026-06-15T20:53:50.877Z"
+last_activity: 2026-06-15
 progress:
   total_phases: 6
   completed_phases: 0
   total_plans: 5
-  completed_plans: 2
+  completed_plans: 3
   percent: 40
 ---
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-06-15)
 ## Current Position
 
 Phase: 1 of 6 (Foundation — Data Model, RLS & Auth Roles)
-Plan: 2 of 5 in current phase
-Status: In progress
-Last activity: 2026-06-15 — Completed 01-02 (Drizzle schema for all 6 tables + initial migration applied to live Supabase Postgres)
+Plan: 3 of 5 in current phase
+Status: Ready to execute
+Last activity: 2026-06-15
 
 Progress: [████░░░░░░] 40%
 
@@ -53,6 +53,7 @@ Progress: [████░░░░░░] 40%
 
 *Updated after each plan completion*
 | Phase 01-foundation-data-model-rls-auth-roles P01 | 35 | 3 tasks | 16 files |
+| Phase 01 P03 | 12 | 1 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -66,6 +67,7 @@ Recent decisions affecting current work:
 - [Roadmap]: WhatsApp message generation isolated into its own final phase (Phase 6) for dedicated encoding/device-testing focus.
 - [Phase 01-foundation-data-model-rls-auth-roles]: Supabase project provisioned via dashboard; DATABASE_URL=Session pooler(5432) for drizzle-kit, DATABASE_URL_RUNTIME=Transaction pooler(6543, prepare:false) for app runtime per D-11
 - [Phase 01-foundation-data-model-rls-auth-roles P02]: All 6 tables (restaurants, units, categories, products, product_availability, admin_users) + admin_role enum defined in src/db/schema.ts and applied to live Supabase Postgres; admin_users.user_id FK to auth.users(id) and role/restaurant_id CHECK constraint added via hand-written journaled migration 0001
+- [Phase 01-foundation-data-model-rls-auth-roles P03]: RLS enabled on all 6 tables via raw SQL migration 0002_rls_policies.sql; is_super_admin() and current_admin_restaurant_id() helper functions are SECURITY DEFINER/LANGUAGE plpgsql (avoids recursion pitfall); default-deny verified live via anon REST queries returning [] for all tables
 
 ### Pending Todos
 
@@ -84,6 +86,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-15T20:30:00.000Z
-Stopped at: Completed 01-02-PLAN.md
+Last session: 2026-06-15T20:53:50.874Z
+Stopped at: Completed 01-03-PLAN.md
 Resume file: None
