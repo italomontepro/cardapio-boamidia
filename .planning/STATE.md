@@ -4,11 +4,11 @@ milestone: v1.0
 milestone_name: milestone
 status: executing
 stopped_at: Completed 01-05-PLAN.md
-last_updated: "2026-06-15T21:54:00.000Z"
-last_activity: 2026-06-15 — Completed 01-05 (login/logout Server Actions, /admin and /painel role-scoped landing pages, scripts/verify-auth.ts -- AUTH-01/02/03 all PASS; Phase 1 complete)
+last_updated: "2026-06-15T22:04:30.676Z"
+last_activity: 2026-06-15
 progress:
   total_phases: 6
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 5
   completed_plans: 5
   percent: 100
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-06-15)
 
 ## Current Position
 
-Phase: 1 of 6 (Foundation — Data Model, RLS & Auth Roles)
-Plan: 5 of 5 in current phase
+Phase: 2 of 6 (platform super admin — restaurant provisioning)
+Plan: Not started
 Status: In progress
-Last activity: 2026-06-15 — Completed 01-05 (login/logout Server Actions, /admin and /painel role-scoped landing pages, scripts/verify-auth.ts -- AUTH-01/02/03 all PASS; Phase 1 complete)
+Last activity: 2026-06-15
 
 Progress: [██████████] 100%
 
