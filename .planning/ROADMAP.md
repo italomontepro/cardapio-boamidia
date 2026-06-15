@@ -32,7 +32,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. Database schema for restaurants, units, categories, products, availability, and admin users exists with RLS enabled on every table
 **Plans**: 5 plans
 Plans:
-- [ ] 01-01-PLAN.md — Scaffold Next.js 16 app, install deps, provision Supabase project, configure Drizzle (Session/Transaction mode)
+- [x] 01-01-PLAN.md — Scaffold Next.js 16 app, install deps, provision Supabase project, configure Drizzle (Session/Transaction mode)
 - [ ] 01-02-PLAN.md — Define Drizzle schema for all 6 tables and apply initial migration
 - [ ] 01-03-PLAN.md — Write and apply RLS policy migration (helper functions + policies for all 6 tables)
 - [ ] 01-04-PLAN.md — Implement @supabase/ssr clients, session middleware, and seed script (1 super admin + 2 restaurant admins)
@@ -108,7 +108,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation — Data Model, RLS & Auth Roles | 0/TBD | Not started | - |
+| 1. Foundation — Data Model, RLS & Auth Roles | 1/5 | In Progress|  |
 | 2. Platform Super-Admin — Restaurant Provisioning | 0/TBD | Not started | - |
 | 3. Restaurant Admin — Units, Catalog & Photos | 0/TBD | Not started | - |
 | 4. Per-Unit Availability Management | 0/TBD | Not started | - |

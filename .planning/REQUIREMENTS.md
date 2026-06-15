@@ -9,9 +9,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Autenticação e Papéis (AUTH)
 
-- [ ] **AUTH-01**: Super admin da plataforma pode fazer login em painel próprio
-- [ ] **AUTH-02**: Admin do restaurante pode fazer login em painel próprio, restrito ao seu restaurante
-- [ ] **AUTH-03**: Dados de cada restaurante são isolados entre tenants (admin de um restaurante não acessa dados de outro)
+- [x] **AUTH-01**: Super admin da plataforma pode fazer login em painel próprio
+- [x] **AUTH-02**: Admin do restaurante pode fazer login em painel próprio, restrito ao seu restaurante
+- [x] **AUTH-03**: Dados de cada restaurante são isolados entre tenants (admin de um restaurante não acessa dados de outro)
 
 ### Admin Geral / Plataforma (PLAT)
 
@@ -89,9 +89,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | Phase 1 | Pending |
-| AUTH-02 | Phase 1 | Pending |
-| AUTH-03 | Phase 1 | Pending |
+| AUTH-01 | Phase 1 | Complete |
+| AUTH-02 | Phase 1 | Complete |
+| AUTH-03 | Phase 1 | Complete |
 | PLAT-01 | Phase 2 | Pending |
 | PLAT-02 | Phase 2 | Pending |
 | PLAT-03 | Phase 2 | Pending |

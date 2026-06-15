@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 1 context gathered
-last_updated: "2026-06-15T14:53:51.629Z"
-last_activity: 2026-06-15 — Roadmap created, phase structure and requirement coverage validated
+status: executing
+stopped_at: Completed 01-01-PLAN.md
+last_updated: "2026-06-15T19:47:27.733Z"
+last_activity: 2026-06-15 — Completed 01-01 (Next.js scaffold + Supabase provisioning + Drizzle config)
 progress:
   total_phases: 6
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 0
+  total_plans: 5
+  completed_plans: 1
+  percent: 20
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-06-15)
 ## Current Position
 
 Phase: 1 of 6 (Foundation — Data Model, RLS & Auth Roles)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-06-15 — Roadmap created, phase structure and requirement coverage validated
+Plan: 1 of 5 in current phase
+Status: In progress
+Last activity: 2026-06-15 — Completed 01-01 (Next.js scaffold + Supabase provisioning + Drizzle config)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [██░░░░░░░░] 20%
 
 ## Performance Metrics
 
@@ -52,6 +52,7 @@ Progress: [░░░░░░░░░░] 0%
 - Trend: -
 
 *Updated after each plan completion*
+| Phase 01-foundation-data-model-rls-auth-roles P01 | 35 | 3 tasks | 16 files |
 
 ## Accumulated Context
 
@@ -63,6 +64,7 @@ Recent decisions affecting current work:
 - [Roadmap]: Phase 1 must establish RLS and tenant-isolation correctly from the first migration — highest-cost-to-fix-later item per research.
 - [Roadmap]: Per-unit availability (CTLG-07) isolated into its own Phase 4, after units/catalog exist (Phase 3), to focus query-correctness work.
 - [Roadmap]: WhatsApp message generation isolated into its own final phase (Phase 6) for dedicated encoding/device-testing focus.
+- [Phase 01-foundation-data-model-rls-auth-roles]: Supabase project provisioned via dashboard; DATABASE_URL=Session pooler(5432) for drizzle-kit, DATABASE_URL_RUNTIME=Transaction pooler(6543, prepare:false) for app runtime per D-11
 
 ### Pending Todos
 
@@ -81,6 +83,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-15T14:53:51.623Z
-Stopped at: Phase 1 context gathered
-Resume file: .planning/phases/01-foundation-data-model-rls-auth-roles/01-CONTEXT.md
+Last session: 2026-06-15T19:47:27.730Z
+Stopped at: Completed 01-01-PLAN.md
+Resume file: None
