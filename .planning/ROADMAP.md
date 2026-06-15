@@ -35,7 +35,7 @@ Plans:
 - [x] 01-01-PLAN.md — Scaffold Next.js 16 app, install deps, provision Supabase project, configure Drizzle (Session/Transaction mode)
 - [x] 01-02-PLAN.md — Define Drizzle schema for all 6 tables and apply initial migration
 - [x] 01-03-PLAN.md — Write and apply RLS policy migration (helper functions + policies for all 6 tables)
-- [ ] 01-04-PLAN.md — Implement @supabase/ssr clients, session middleware, and seed script (1 super admin + 2 restaurant admins)
+- [x] 01-04-PLAN.md — Implement @supabase/ssr clients, session middleware, and seed script (1 super admin + 2 restaurant admins)
 - [ ] 01-05-PLAN.md — Implement login/logout, /admin and /painel landing pages, and verify-auth script
 
 ### Phase 2: Platform Super-Admin — Restaurant Provisioning

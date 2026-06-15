@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-03-PLAN.md
-last_updated: "2026-06-15T20:53:50.877Z"
-last_activity: 2026-06-15
+stopped_at: Completed 01-04-PLAN.md
+last_updated: "2026-06-15T21:23:20.314Z"
+last_activity: 2026-06-15 — Completed 01-04 (@supabase/ssr clients, session middleware, and seed script: 1 super_admin + 2 restaurant_admins live in Supabase)
 progress:
   total_phases: 6
   completed_phases: 0
   total_plans: 5
-  completed_plans: 3
+  completed_plans: 4
   percent: 40
 ---
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-06-15)
 ## Current Position
 
 Phase: 1 of 6 (Foundation — Data Model, RLS & Auth Roles)
-Plan: 3 of 5 in current phase
-Status: Ready to execute
-Last activity: 2026-06-15
+Plan: 4 of 5 in current phase
+Status: In progress
+Last activity: 2026-06-15 — Completed 01-04 (@supabase/ssr clients, session middleware, and seed script: 1 super_admin + 2 restaurant_admins live in Supabase)
 
 Progress: [████░░░░░░] 40%
 
@@ -54,6 +54,7 @@ Progress: [████░░░░░░] 40%
 *Updated after each plan completion*
 | Phase 01-foundation-data-model-rls-auth-roles P01 | 35 | 3 tasks | 16 files |
 | Phase 01 P03 | 12 | 1 tasks | 3 files |
+| Phase 01 P04 | 13 | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -68,6 +69,7 @@ Recent decisions affecting current work:
 - [Phase 01-foundation-data-model-rls-auth-roles]: Supabase project provisioned via dashboard; DATABASE_URL=Session pooler(5432) for drizzle-kit, DATABASE_URL_RUNTIME=Transaction pooler(6543, prepare:false) for app runtime per D-11
 - [Phase 01-foundation-data-model-rls-auth-roles P02]: All 6 tables (restaurants, units, categories, products, product_availability, admin_users) + admin_role enum defined in src/db/schema.ts and applied to live Supabase Postgres; admin_users.user_id FK to auth.users(id) and role/restaurant_id CHECK constraint added via hand-written journaled migration 0001
 - [Phase 01-foundation-data-model-rls-auth-roles P03]: RLS enabled on all 6 tables via raw SQL migration 0002_rls_policies.sql; is_super_admin() and current_admin_restaurant_id() helper functions are SECURITY DEFINER/LANGUAGE plpgsql (avoids recursion pitfall); default-deny verified live via anon REST queries returning [] for all tables
+- [Phase 01-foundation-data-model-rls-auth-roles P04]: @supabase/ssr server/browser client factories + updateSession middleware protecting /admin and /painel implemented; scripts/seed.ts creates 1 super_admin + 2 restaurant_admins (2 distinct restaurants) via Admin API, verified live in Postgres (D-04); ws/@types/ws added as dev deps for Node 20 realtime client compatibility
 
 ### Pending Todos
 
@@ -86,6 +88,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-15T20:53:50.874Z
-Stopped at: Completed 01-03-PLAN.md
+Last session: 2026-06-15T21:23:20.314Z
+Stopped at: Completed 01-04-PLAN.md
 Resume file: None
