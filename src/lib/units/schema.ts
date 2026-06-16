@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { isValidPhoneNumber, parsePhoneNumber } from 'libphonenumber-js'
+import { isValidPhoneNumber, parsePhoneNumber } from 'libphonenumber-js/min'
 
 export const upsertUnitSchema = z.object({
   id: z.string().uuid().optional(),

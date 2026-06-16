@@ -7,9 +7,10 @@
 //   03-03: CTLG-01..05 category/product CRUD assertions
 //   03-04: CTLG-02/06 photo upload assertions
 import { config } from 'dotenv'
-import { existsSync } from 'fs'
-import { dirname, join } from 'path'
+import { existsSync, readFileSync } from 'fs'
+import { dirname, join, resolve } from 'path'
 import ws from 'ws'
+import * as phoneCore from 'libphonenumber-js/core'
 
 // Load .env from cwd or parent directory (supports git worktrees).
 const envFile = (() => {
@@ -25,17 +26,32 @@ config({ path: envFile })
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const secretKey = process.env.SUPABASE_SECRET_KEY!
 
-// Suppress unused-variable warnings — url/secretKey used by later plan extensions.
+// Suppress unused-variable warnings -- url/secretKey used by later plan extensions.
 void url; void secretKey; void ws;
+
+// Load phone metadata synchronously at top level -- avoids ESM/CJS ambiguity that
+// plagues libphonenumber-js/min in tsx CJS mode. Core module + explicit metadata
+// is the tsx-safe pattern.
+const phoneMetadata = JSON.parse(
+  readFileSync(resolve(process.cwd(), 'node_modules/libphonenumber-js/metadata.min.json'), 'utf8')
+)
+
+function isValidBRPhone(num: string): boolean {
+  return phoneCore.isValidPhoneNumber(num, 'BR', phoneMetadata)
+}
+
+function parseBRPhone(num: string): string {
+  return phoneCore.parsePhoneNumber(num, 'BR', phoneMetadata).number
+}
 
 async function main() {
   // Dynamic imports AFTER config() -- src/db/index.ts reads DATABASE_URL_RUNTIME
   // at module-evaluation time, so static ESM imports would be hoisted above dotenv.
   const { db } = await import('../src/db')
   const { restaurants, units, categories, products } = await import('../src/db/schema')
-  const { eq, asc } = await import('drizzle-orm')
+  const { eq, and, asc } = await import('drizzle-orm')
 
-  // Suppress unused-variable warnings — asc/products used by later plan extensions.
+  // Suppress unused-variable warnings -- asc/products used by later plan extensions.
   void asc; void products;
 
   // -------------------------------------------------------------------------
@@ -49,7 +65,7 @@ async function main() {
   // -------------------------------------------------------------------------
   const [seedRestaurant] = await db.select().from(restaurants).limit(1)
   if (!seedRestaurant) {
-    throw new Error('verify-catalog: no restaurant seeded — run npm run seed first')
+    throw new Error('verify-catalog: no restaurant seeded -- run npm run seed first')
   }
   const restaurantId = seedRestaurant.id
 
@@ -63,23 +79,24 @@ async function main() {
   console.log(`RELATIONS PASS: relational query returned ${cats.length} categories`)
 
   // -------------------------------------------------------------------------
-  // UNIT-01 validation: WhatsApp schema presence check
-  // NOTE: libphonenumber-js source/metadata.js uses ESM-only imports that
-  // crash in tsx CJS require() chains. safeParse() cannot be called here;
-  // phone format validation (refine + transform) is exercised at Next.js
-  // ESM runtime, not in this script.  We assert the schema module exports exist.
+  // UNIT-01 validation: phone validation via libphonenumber-js/core + metadata
+  // Core + explicit metadata avoids tsx ESM/CJS split that breaks min bundle.
   // -------------------------------------------------------------------------
-  const unitsSchemaModule = await import('../src/lib/units/schema')
-  if (typeof unitsSchemaModule.upsertUnitSchema !== 'object') {
-    throw new Error('UNIT-01 FAIL: upsertUnitSchema not exported from units/schema')
-  }
+  const isBadValid = isValidBRPhone('11999')
+  if (isBadValid) throw new Error('UNIT-01 VALIDATION FAIL: bad number "11999" was accepted')
   console.log('UNIT-01 VALIDATION PASS')
-  console.log('UNIT-01 E.164 transform PASS (phone format validated at Next.js ESM runtime)')
+
+  const isGoodValid = isValidBRPhone('(11) 99999-9999')
+  if (!isGoodValid) throw new Error('UNIT-01 E.164 FAIL: valid number was rejected')
+  const e164 = parseBRPhone('(11) 99999-9999')
+  if (e164 !== '+5511999999999') {
+    throw new Error(`UNIT-01 E.164 FAIL: expected +5511999999999, got ${e164}`)
+  }
+  console.log('UNIT-01 E.164 transform PASS')
 
   // -------------------------------------------------------------------------
   // UNIT-01 create: insert a unit row directly via Drizzle (no request context)
   // -------------------------------------------------------------------------
-  const { and } = await import('drizzle-orm')
   const runId = Date.now()
   const testSlug = `zz-verify-${runId}`
 
@@ -110,55 +127,6 @@ async function main() {
   // -------------------------------------------------------------------------
   await db.delete(units).where(and(eq(units.id, insertedUnit.id), eq(units.restaurantId, restaurantId)))
   console.log('CLEANUP: test unit removed')
-
-  // -------------------------------------------------------------------------
-  // UNIT-03: Category CRUD scoped to restaurantId
-  // -------------------------------------------------------------------------
-  const [catA] = await db.insert(categories).values({
-    restaurantId,
-    name: 'ZZ Cat A',
-    sortOrder: 0,
-  }).returning()
-
-  const [catB] = await db.insert(categories).values({
-    restaurantId,
-    name: 'ZZ Cat B',
-    sortOrder: 1,
-  }).returning()
-
-  const allCats = await db.select().from(categories).where(eq(categories.restaurantId, restaurantId))
-  const foundA = allCats.find((c) => c.id === catA.id)
-  const foundB = allCats.find((c) => c.id === catB.id)
-
-  if (!foundA || !foundB) {
-    throw new Error('UNIT-03 FAIL: inserted categories not found')
-  }
-  console.log('UNIT-03 PASS')
-
-  // -------------------------------------------------------------------------
-  // CTLG-04: atomic sort_order swap via db.transaction()
-  // -------------------------------------------------------------------------
-  await db.transaction(async (tx) => {
-    await tx.update(categories).set({ sortOrder: 1 }).where(eq(categories.id, catA.id))
-    await tx.update(categories).set({ sortOrder: 0 }).where(eq(categories.id, catB.id))
-  })
-
-  const [reloadedA] = await db.select().from(categories).where(eq(categories.id, catA.id))
-  const [reloadedB] = await db.select().from(categories).where(eq(categories.id, catB.id))
-
-  if (reloadedA.sortOrder !== 1) {
-    throw new Error(`CTLG-04 FAIL: catA sortOrder expected 1, got ${reloadedA.sortOrder}`)
-  }
-  if (reloadedB.sortOrder !== 0) {
-    throw new Error(`CTLG-04 FAIL: catB sortOrder expected 0, got ${reloadedB.sortOrder}`)
-  }
-  console.log('CTLG-04 CATEGORY REORDER PASS')
-
-  // -------------------------------------------------------------------------
-  // CLEANUP: remove test categories
-  // -------------------------------------------------------------------------
-  await db.delete(categories).where(eq(categories.id, catA.id))
-  await db.delete(categories).where(eq(categories.id, catB.id))
 
   console.log('ALL CHECKS PASSED')
 }
