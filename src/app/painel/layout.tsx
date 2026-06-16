@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import { getCurrentAdmin } from '@/lib/auth/session'
 import { logout } from '@/lib/auth/actions'
 import { Button } from '@/components/ui/button'
+import { SidebarNav } from './_components/sidebar-nav'
 
 export default async function PainelLayout({
   children,
@@ -24,7 +25,10 @@ export default async function PainelLayout({
           </Button>
         </form>
       </header>
-      <main className="flex flex-1 flex-col p-6">{children}</main>
+      <div className="flex flex-1">
+        <SidebarNav />
+        <main className="flex flex-1 flex-col p-6">{children}</main>
+      </div>
     </div>
   )
 }
