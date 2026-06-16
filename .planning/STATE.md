@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 04-01-PLAN.md
-last_updated: "2026-06-16T19:24:38.805Z"
-last_activity: 2026-06-16
+stopped_at: Phase 4 UI-SPEC approved
+last_updated: "2026-06-16T19:21:04.800Z"
+last_activity: 2026-06-16 -- Phase 04 execution started
 progress:
   total_phases: 6
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 15
   completed_plans: 13
   percent: 100
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-06-15)
 
 **Core value:** Um cliente final consegue acessar o link de um restaurante, escolher a unidade, montar um pedido pelo cardápio e enviá-lo via WhatsApp direto para aquela unidade.
-**Current focus:** Phase 03 — restaurant-admin-units-catalog-photos
+**Current focus:** Phase 04 — per-unit-availability-management
 
 ## Current Position
 
-Phase: 03 (restaurant-admin-units-catalog-photos) — EXECUTING
-Plan: 3 of 4
-Status: Ready to execute
-Last activity: 2026-06-16
+Phase: 04 (per-unit-availability-management) — EXECUTING
+Plan: 1 of 2
+Status: Executing Phase 04
+Last activity: 2026-06-16 -- Phase 04 execution started
 
 Progress: [██████████] 100%
 
@@ -61,7 +61,6 @@ Progress: [██████████] 100%
 | Phase 02-platform-super-admin-restaurant-provisioning P02 | 5 | 2 tasks | 3 files |
 | Phase 02-platform-super-admin-restaurant-provisioning P04 | 182 | 2 tasks | 6 files |
 | Phase 03 P03-04 | 25 | 2 tasks | 7 files |
-| Phase 04-per-unit-availability-management P01 | 5 | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -90,8 +89,6 @@ Recent decisions affecting current work:
 - [Phase 02-platform-super-admin-restaurant-provisioning]: Replaced slugify dependency (uninstalled) with inline NFD normalization in slug.ts — handles pt-BR characters identically without external package
 - [Phase 03]: Zod 4 price transform uses .transform().refine() instead of .pipe(z.coerce.number()) — ZodCoercedNumber input type unknown is incompatible with .pipe() string requirement
 - [Phase 03]: base-ui Accordion uses 'multiple' prop (not type='multiple' like Radix UI) — AccordionItem value prop, AccordionRoot defaultValue array
-- [Phase 04-per-unit-availability-management]: shadcn Switch/Select/Tooltip installed via npx shadcn@latest add for availability UI Wave 1
-- [Phase 04-per-unit-availability-management]: verify-availability.ts mirrors verify-catalog.ts pattern: dotenv walk-up + dynamic imports after config(); 6 CTLG-07 sparse-exclusion assertions pass live
 
 ### Pending Todos
 
@@ -110,6 +107,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-16T19:24:38.802Z
-Stopped at: Completed 04-01-PLAN.md
-Resume file: None
+Last session: 2026-06-16T18:01:20.489Z
+Stopped at: Phase 4 UI-SPEC approved
+Resume file: .planning/phases/04-per-unit-availability-management/04-UI-SPEC.md
