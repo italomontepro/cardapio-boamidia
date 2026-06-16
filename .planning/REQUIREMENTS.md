@@ -15,88 +15,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Admin Geral / Plataforma (PLAT)
 
-- [x] **PLAT-01**: Super admin pode criar um novo restaurante com nome e slug único (link)
-- [x] **PLAT-02**: Super admin pode editar dados de um restaurante existente
-- [x] **PLAT-03**: Super admin pode ativar/desativar um restaurante
-- [x] **PLAT-04**: Super admin pode listar todos os restaurantes cadastrados na plataforma
-- [x] **PLAT-05**: Ao criar um restaurante, super admin provisiona o primeiro usuário admin daquele restaurante
-
-### Admin do Restaurante — Unidades (UNIT)
-
-- [ ] **UNIT-01**: Admin do restaurante pode criar, editar e remover unidades/filiais (nome, endereço, WhatsApp)
-- [ ] **UNIT-02**: Sistema valida o formato do número de WhatsApp de cada unidade
-- [ ] **UNIT-03**: Admin do restaurante pode definir horário de funcionamento (exibição) de cada unidade
-
-### Admin do Restaurante — Cardápio (CTLG)
-
-- [ ] **CTLG-01**: Admin do restaurante pode criar, editar e remover categorias do cardápio
-- [ ] **CTLG-02**: Admin do restaurante pode definir a ordem de exibição das categorias
-- [ ] **CTLG-03**: Admin do restaurante pode criar, editar e remover produtos (nome, descrição, preço)
-- [ ] **CTLG-04**: Admin do restaurante pode definir a ordem de exibição dos produtos dentro de uma categoria
-- [ ] **CTLG-05**: Admin do restaurante pode fazer upload de foto para cada produto
-- [ ] **CTLG-06**: Admin do restaurante pode marcar um produto como "destaque/promoção"
-- [ ] **CTLG-07**: Admin do restaurante pode alternar a disponibilidade de cada produto por unidade
-
-### Cardápio do Cliente (MENU)
-
-- [ ] **MENU-01**: Cliente acessa o link único do restaurante e vê uma página de seleção de unidade (nome, endereço, horário)
-- [ ] **MENU-02**: Cliente vê o cardápio da unidade escolhida, organizado por categoria, respeitando a ordem definida pelo admin
-- [ ] **MENU-03**: Apenas produtos disponíveis na unidade selecionada são exibidos no cardápio
-- [ ] **MENU-04**: Produtos marcados como destaque são visualmente sinalizados no cardápio
-- [ ] **MENU-05**: Preços são exibidos no formato pt-BR (R$)
-- [ ] **MENU-06**: Cardápio tem layout responsivo, mobile-first
-- [ ] **MENU-07**: Estados vazios são tratados (sem unidades cadastradas, categoria sem produtos disponíveis)
-
-### Carrinho e Pedido via WhatsApp (CART)
-
-- [ ] **CART-01**: Cliente adiciona produtos ao carrinho com quantidade
-- [ ] **CART-02**: Cliente adiciona observações por item (ex: "sem cebola")
-- [ ] **CART-03**: Cliente ajusta quantidades ou remove itens do carrinho
-- [ ] **CART-04**: Cliente vê um resumo do pedido (itens, quantidades, subtotal) antes de enviar
-- [ ] **CART-05**: Cliente envia o pedido via WhatsApp (wa.me) com mensagem formatada para o número da unidade selecionada
-- [ ] **CART-06**: Carrinho vazio exibe estado apropriado (sem permitir envio de pedido vazio)
-
-## v2 Requirements
-
-Deferred to future release. Tracked but not in current roadmap.
-
-### Operação (OPS)
-
-- **OPS-01**: Assistente/wizard de onboarding para o super admin cadastrar um novo restaurante mais rapidamente
-- **OPS-02**: Compressão/redimensionamento automático de imagens no upload de fotos de produtos
-
-### Cardápio do Cliente (MENU)
-
-- **MENU-08**: Navegação fixa por categorias / busca dentro do cardápio (para cardápios grandes)
-
-## Out of Scope
-
-Explicitly excluded. Documented to prevent scope creep.
-
-| Feature | Reason |
-|---------|--------|
-| Pagamento online (PIX/cartão) | Pedido é combinado via WhatsApp; pagamento ocorre fora do sistema na entrega/retirada |
-| Histórico/rastreamento de pedidos (status recebido/preparando/entregue) | v1 apenas envia a mensagem ao WhatsApp; a conversa no WhatsApp é o registro do pedido |
-| Auto-cadastro público de restaurantes | Restaurantes são cadastrados manualmente pelo super admin; sem fluxo de signup |
-| Programas de fidelidade/cashback | Exigiria identidade do cliente, incompatível com fluxo sem login |
-| Cálculo de zona/taxa de entrega | Negociado via WhatsApp como hoje; fora do escopo do cardápio |
-| Cardápio multilíngue (além de pt-BR) | Sem demanda validada; não construir UI de i18n agora |
-| Sincronização de estoque em tempo real com PDV | Toggle manual de disponibilidade cobre a necessidade prática do v1 |
-
-## Traceability
-
-Which phases cover which requirements. Updated during roadmap creation.
-
-| Requirement | Phase | Status |
-|-------------|-------|--------|
-| AUTH-01 | Phase 1 | Complete |
-| AUTH-02 | Phase 1 | Complete |
-| AUTH-03 | Phase 1 | Complete |
-| PLAT-01 | Phase 2 | Complete |
-| PLAT-02 | Phase 2 | Complete |
+| PLAT-01 | Phase 2 | Pending |
+| PLAT-02 | Phase 2 | Pending |
 | PLAT-03 | Phase 2 | Complete |
-| PLAT-04 | Phase 2 | Complete |
-| PLAT-05 | Phase 2 | Complete |
+| PLAT-04 | Phase 2 | Pending |
+| PLAT-05 | Phase 2 | Pending |
+
 | UNIT-01 | Phase 3 | Pending |
 | UNIT-02 | Phase 3 | Pending |
 | UNIT-03 | Phase 3 | Pending |

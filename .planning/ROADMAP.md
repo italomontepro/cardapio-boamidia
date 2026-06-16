@@ -109,7 +109,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation — Data Model, RLS & Auth Roles | 5/5 | Complete   | 2026-06-15 |
-| 2. Platform Super-Admin — Restaurant Provisioning | 0/TBD | Not started | - |
+| 2. Platform Super-Admin — Restaurant Provisioning | 1/4 | In Progress|  |
 | 3. Restaurant Admin — Units, Catalog & Photos | 0/TBD | Not started | - |
 | 4. Per-Unit Availability Management | 0/TBD | Not started | - |
 | 5. Public Customer Menu — Selection, Browsing & Cart | 0/TBD | Not started | - |

@@ -13,6 +13,7 @@ import {
 const ERROR_MESSAGES: Record<string, string> = {
   invalid_credentials: 'Email ou senha invalidos.',
   not_an_admin: 'Este usuario nao tem acesso administrativo.',
+  restaurant_inactive: 'Este restaurante está desativado. Contate o administrador da plataforma.',
 }
 
 export default async function LoginPage({

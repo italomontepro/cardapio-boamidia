@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Completed 02-01-PLAN.md: foundation, shared modules, verify scaffold"
-last_updated: "2026-06-16T04:17:44.322Z"
+stopped_at: Completed 02-03-PLAN.md (D-11 is_active login gate) + 02-01-PLAN.md (foundation)
+last_updated: "2026-06-16T04:19:00.909Z"
 last_activity: 2026-06-15
 progress:
   total_phases: 6
@@ -57,6 +57,7 @@ Progress: [██████████] 100%
 | Phase 01 P04 | 13 | 2 tasks | 7 files |
 | Phase 01 P05 | 18 | 4 tasks | 9 files |
 | Phase 02 P01 | 12 | 3 tasks | 9 files |
+| Phase 02-platform-super-admin-restaurant-provisioning P03 | 5 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -76,6 +77,9 @@ Recent decisions affecting current work:
 - [Phase 02-01]: createAdminClient() omits ws realtime shim — Next.js server runtime has native WebSocket; add shim only if runtime errors appear in Plan 02
 - [Phase 02-01]: updateRestaurantSchema excludes adminEmail — admin provisioning is create-only per D-10, no multi-admin management in v1
 - [Phase 02-01]: shadcn switch intentionally NOT installed — D-12 requires asymmetric UX: activate=Button, deactivate=Button+AlertDialog confirm
+- [Phase 02-platform-super-admin-restaurant-provisioning]: D-11 gate runs only for restaurant_admin role; super_admin is structurally excluded (null restaurant_id and gate block never executes)
+- [Phase 02-platform-super-admin-restaurant-provisioning]: verify-auth.ts replicates gate SELECT chain (not calling login()) to avoid redirect() throwing in Node.js script context
+
 
 ### Pending Todos
 
@@ -94,6 +98,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-16T04:17:44.319Z
-Stopped at: Completed 02-01-PLAN.md: foundation, shared modules, verify scaffold
+Last session: 2026-06-16T04:19:00.906Z
+Stopped at: Wave 0 complete — 02-01 (foundation) + 02-03 (D-11 login gate)
 Resume file: None
