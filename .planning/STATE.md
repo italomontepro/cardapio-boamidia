@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-06-15)
 
 **Core value:** Um cliente final consegue acessar o link de um restaurante, escolher a unidade, montar um pedido pelo cardápio e enviá-lo via WhatsApp direto para aquela unidade.
-**Current focus:** Phase 1 — Foundation — Data Model, RLS & Auth Roles
+**Current focus:** Phase 02 — platform-super-admin-restaurant-provisioning
 
 ## Current Position
 
-Phase: 2 of 6 (platform super admin — restaurant provisioning)
-Plan: Not started
-Status: In progress
-Last activity: 2026-06-15
+Phase: 02 (platform-super-admin-restaurant-provisioning) — EXECUTING
+Plan: 1 of 4
+Status: Executing Phase 02
+Last activity: 2026-06-16 -- Phase 02 execution started
 
 Progress: [██████████] 100%
 
