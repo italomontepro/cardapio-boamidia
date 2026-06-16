@@ -62,7 +62,12 @@ Plans:
   4. Restaurant admin can create, edit, remove, and reorder products within a category, including name, description, and price
   5. Restaurant admin can upload a photo for each product
   6. Restaurant admin can mark a product as "featured/promo"
-**Plans**: TBD
+**Plans**: 4 plans
+Plans:
+- [ ] 03-01-PLAN.md — Setup: shadcn components, next/image remotePatterns, Drizzle relations, verify-catalog stub, Storage bucket
+- [ ] 03-02-PLAN.md — Sidebar layout + Units CRUD (WhatsApp validation, hours)
+- [ ] 03-03-PLAN.md — Categories CRUD + reorder (sort_order swap)
+- [ ] 03-04-PLAN.md — Products CRUD + photo upload + accordion cardapio
 **UI hint**: yes
 
 ### Phase 4: Per-Unit Availability Management
@@ -110,7 +115,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Foundation — Data Model, RLS & Auth Roles | 5/5 | Complete   | 2026-06-15 |
 | 2. Platform Super-Admin — Restaurant Provisioning | 4/4 | Complete   | 2026-06-16 |
-| 3. Restaurant Admin — Units, Catalog & Photos | 0/TBD | Not started | - |
+| 3. Restaurant Admin — Units, Catalog & Photos | 0/4 | Not started | - |
 | 4. Per-Unit Availability Management | 0/TBD | Not started | - |
 | 5. Public Customer Menu — Selection, Browsing & Cart | 0/TBD | Not started | - |
 | 6. WhatsApp Order Generation | 0/TBD | Not started | - |
