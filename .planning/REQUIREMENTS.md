@@ -15,11 +15,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Admin Geral / Plataforma (PLAT)
 
-| PLAT-01 | Phase 2 | Pending |
-| PLAT-02 | Phase 2 | Pending |
+| PLAT-01 | Phase 2 | Complete |
+| PLAT-02 | Phase 2 | Complete |
 | PLAT-03 | Phase 2 | Complete |
 | PLAT-04 | Phase 2 | Pending |
-| PLAT-05 | Phase 2 | Pending |
+| PLAT-05 | Phase 2 | Complete |
 
 | UNIT-01 | Phase 3 | Pending |
 | UNIT-02 | Phase 3 | Pending |

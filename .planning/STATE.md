@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-03-PLAN.md (D-11 is_active login gate) + 02-01-PLAN.md (foundation)
-last_updated: "2026-06-16T04:19:00.909Z"
-last_activity: 2026-06-15
+stopped_at: "Completed 02-02-PLAN.md (Server Actions: createRestaurant, updateRestaurant, toggleRestaurantActive)"
+last_updated: "2026-06-16T04:31:37.435Z"
+last_activity: 2026-06-16
 progress:
   total_phases: 6
   completed_phases: 1
   total_plans: 9
-  completed_plans: 6
+  completed_plans: 8
   percent: 100
 ---
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-06-15)
 ## Current Position
 
 Phase: 02 (platform-super-admin-restaurant-provisioning) — EXECUTING
-Plan: 1 of 4
-Status: Executing Phase 02
-Last activity: 2026-06-16 -- Phase 02 execution started
+Plan: 2 of 4
+Status: Ready to execute
+Last activity: 2026-06-16
 
 Progress: [██████████] 100%
 
@@ -58,6 +58,7 @@ Progress: [██████████] 100%
 | Phase 01 P05 | 18 | 4 tasks | 9 files |
 | Phase 02 P01 | 12 | 3 tasks | 9 files |
 | Phase 02-platform-super-admin-restaurant-provisioning P03 | 5 | 2 tasks | 3 files |
+| Phase 02-platform-super-admin-restaurant-provisioning P02 | 5 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -79,7 +80,8 @@ Recent decisions affecting current work:
 - [Phase 02-01]: shadcn switch intentionally NOT installed — D-12 requires asymmetric UX: activate=Button, deactivate=Button+AlertDialog confirm
 - [Phase 02-platform-super-admin-restaurant-provisioning]: D-11 gate runs only for restaurant_admin role; super_admin is structurally excluded (null restaurant_id and gate block never executes)
 - [Phase 02-platform-super-admin-restaurant-provisioning]: verify-auth.ts replicates gate SELECT chain (not calling login()) to avoid redirect() throwing in Node.js script context
-
+- [Phase 02-platform-super-admin-restaurant-provisioning]: createRestaurant uses db.transaction() wrapping both Postgres inserts with Auth API inside callback; single deleteUser compensation path on throw (Pattern 2 refined from RESEARCH)
+- [Phase 02-platform-super-admin-restaurant-provisioning]: createAdminClient() gains conditional ws transport shim (typeof WebSocket === 'undefined') — plan explicitly flagged this fallback; needed when Server Actions are imported from tsx scripts on Node.js 20
 
 ### Pending Todos
 
@@ -98,6 +100,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-16T04:19:00.906Z
-Stopped at: Wave 0 complete — 02-01 (foundation) + 02-03 (D-11 login gate)
+Last session: 2026-06-16T04:31:37.432Z
+Stopped at: Completed 02-02-PLAN.md (Server Actions: createRestaurant, updateRestaurant, toggleRestaurantActive)
 Resume file: None
