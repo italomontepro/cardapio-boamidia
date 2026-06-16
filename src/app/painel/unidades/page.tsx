@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { UnitFormDialog } from './unit-form-dialog'
 import { UnitTable } from './unit-table'
+import { Store } from 'lucide-react'
 
 export interface UnitRow {
   id: string
@@ -13,7 +14,6 @@ export interface UnitRow {
 export default async function UnidadesPage() {
   const supabase = await createClient()
 
-  // RLS scopes this to the logged-in admin's restaurant automatically.
   const { data } = await supabase
     .from('units')
     .select('id, name, address, whatsapp_number, hours')
@@ -36,6 +36,7 @@ export default async function UnidadesPage() {
 
       {units.length === 0 ? (
         <div className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed p-12 text-center">
+          <Store className="size-8 text-muted-foreground/40" />
           <p className="text-sm font-medium text-foreground">Nenhuma unidade ainda</p>
           <p className="text-sm text-muted-foreground mt-1">Cadastre a primeira filial do seu restaurante.</p>
         </div>

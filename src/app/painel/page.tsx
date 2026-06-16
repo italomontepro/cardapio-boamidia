@@ -1,12 +1,10 @@
 import { createClient } from '@/lib/supabase/server'
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { Building2 } from 'lucide-react'
 
 export default async function PainelPage() {
   const supabase = await createClient()
 
-  // No tenant filter -- the current_admin_restaurant_id() RLS policy on
-  // `restaurants` (plan 01-03) scopes this query to exactly the restaurant_admin's
-  // own restaurant. This query IS the D-09 proof of cross-tenant isolation.
   const { data: restaurants } = await supabase
     .from('restaurants')
     .select('id, name, slug, is_active, created_at')
@@ -15,18 +13,20 @@ export default async function PainelPage() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-xl font-semibold">Painel do Restaurante</h1>
+      <h1 className="text-2xl font-semibold tracking-tight">Visão Geral</h1>
 
       {!restaurant ? (
-        <p className="text-sm text-destructive">
-          Nenhum restaurante associado a esta conta.
-        </p>
+        <div className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed p-12 text-center">
+          <Building2 className="size-8 text-muted-foreground/40" />
+          <p className="text-sm font-medium text-foreground">Nenhum restaurante associado</p>
+          <p className="text-sm text-muted-foreground mt-1">Esta conta não está vinculada a um restaurante. Contate o administrador da plataforma.</p>
+        </div>
       ) : (
         <Card>
           <CardHeader>
             <CardTitle>{restaurant.name}</CardTitle>
             <CardDescription>
-              /{restaurant.slug} -- {restaurant.is_active ? 'ativo' : 'inativo'}
+              /r/{restaurant.slug} · {restaurant.is_active ? 'ativo' : 'inativo'}
             </CardDescription>
           </CardHeader>
         </Card>

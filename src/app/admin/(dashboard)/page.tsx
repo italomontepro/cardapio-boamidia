@@ -1,21 +1,16 @@
 import { createClient } from '@/lib/supabase/server'
 import { RestaurantFormDialog } from './restaurant-form-dialog'
 import { RestaurantTable } from './restaurant-table'
+import { Building2 } from 'lucide-react'
 
 export default async function AdminPage() {
   const supabase = await createClient()
 
-  // No tenant filter -- is_super_admin() RLS policy on `restaurants`
-  // (plan 01-03) allows super_admin to read every row. This query IS the
-  // D-09 proof that super_admin sees all restaurants.
   const { data: restaurants } = await supabase
     .from('restaurants')
     .select('id, name, slug, is_active, created_at')
     .order('name')
 
-  // Admin count (RESEARCH Pattern 4): second RLS-scoped query on admin_users.
-  // super_admin RLS allows reading all rows. Count per restaurant_id in JS.
-  // NOT using Drizzle here — preserves the Phase 1 D-09 security proof.
   const { data: adminUsersData } = await supabase
     .from('admin_users')
     .select('restaurant_id')
@@ -41,15 +36,16 @@ export default async function AdminPage() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-semibold">Painel da Plataforma -- Restaurantes</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">Restaurantes</h1>
         <RestaurantFormDialog mode="create" />
       </div>
 
       {rows.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-lg border border-dashed p-12 text-center">
-          <h2 className="text-sm font-semibold">Nenhum restaurante cadastrado</h2>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Cadastre o primeiro restaurante da plataforma para começar. Clique em &quot;Novo Restaurante&quot; para criar o cadastro e provisionar o admin.
+        <div className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed p-12 text-center">
+          <Building2 className="size-8 text-muted-foreground/40" />
+          <p className="text-sm font-medium text-foreground">Nenhum restaurante cadastrado</p>
+          <p className="text-sm text-muted-foreground mt-1">
+            Cadastre o primeiro restaurante da plataforma. Clique em &quot;Novo Restaurante&quot; para criar o cadastro.
           </p>
         </div>
       ) : (

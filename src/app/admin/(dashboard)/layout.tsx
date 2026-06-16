@@ -16,10 +16,16 @@ export default async function AdminLayout({
 
   return (
     <div className="flex flex-1 flex-col">
-      <header className="flex items-center justify-between border-b px-6 py-3">
-        <span className="text-sm text-muted-foreground">{admin.email}</span>
+      <header className="flex items-center justify-between border-b bg-card px-6 py-3.5">
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-semibold text-foreground">Boa Mídia</span>
+          <span className="text-muted-foreground/40 text-sm">·</span>
+          <span className="text-sm text-muted-foreground">Plataforma</span>
+          <span className="text-muted-foreground/40 text-sm">·</span>
+          <span className="text-sm text-muted-foreground">{admin.email}</span>
+        </div>
         <form action={logout}>
-          <Button type="submit" variant="outline" size="sm">
+          <Button type="submit" variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
             Sair
           </Button>
         </form>
