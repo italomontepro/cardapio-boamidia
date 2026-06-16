@@ -10,6 +10,7 @@ import {
   AccordionContent,
 } from '@/components/ui/accordion'
 import { Button } from '@/components/ui/button'
+import { ChevronUp, ChevronDown } from 'lucide-react'
 import { moveCategoryUp, moveCategoryDown, moveProductUp, moveProductDown } from '@/lib/catalog/actions'
 import { CategoryFormDialog } from './category-form-dialog'
 import { CategoryDeleteDialog } from './category-delete-dialog'
@@ -85,7 +86,7 @@ export function CardapioAccordion({ categories }: CardapioAccordionProps) {
                 aria-label="Mover categoria para cima"
                 className="h-6 w-6 p-0"
               >
-                ↑
+                <ChevronUp className="size-3" />
               </Button>
               <Button
                 variant="outline"
@@ -95,7 +96,7 @@ export function CardapioAccordion({ categories }: CardapioAccordionProps) {
                 aria-label="Mover categoria para baixo"
                 className="h-6 w-6 p-0"
               >
-                ↓
+                <ChevronDown className="size-3" />
               </Button>
             </div>
 
@@ -167,7 +168,7 @@ export function CardapioAccordion({ categories }: CardapioAccordionProps) {
                           aria-label="Mover produto para cima"
                           className="h-6 w-6 p-0"
                         >
-                          ↑
+                          <ChevronUp className="size-3" />
                         </Button>
                         <Button
                           variant="outline"
@@ -177,7 +178,7 @@ export function CardapioAccordion({ categories }: CardapioAccordionProps) {
                           aria-label="Mover produto para baixo"
                           className="h-6 w-6 p-0"
                         >
-                          ↓
+                          <ChevronDown className="size-3" />
                         </Button>
                       </div>
                       <ProductFormDialog mode="edit" categoryId={c.id} product={p} />
