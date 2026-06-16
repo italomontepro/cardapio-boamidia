@@ -78,7 +78,10 @@ Plans:
   1. Restaurant admin can toggle a product's availability on/off for each individual unit
   2. Toggling availability for one unit does not affect the product's availability at other units
   3. A documented default applies when no explicit availability record exists for a product/unit pair
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 04-01-PLAN.md — Wave 0 setup: shadcn switch/select/tooltip, Disponibilidade nav link, verify-availability script
+- [ ] 04-02-PLAN.md — toggleAvailability Server Action + /painel/disponibilidade page + desktop matrix & mobile views (optimistic)
 **UI hint**: yes
 
 ### Phase 5: Public Customer Menu — Selection, Browsing & Cart
@@ -116,6 +119,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 1. Foundation — Data Model, RLS & Auth Roles | 5/5 | Complete   | 2026-06-15 |
 | 2. Platform Super-Admin — Restaurant Provisioning | 4/4 | Complete   | 2026-06-16 |
 | 3. Restaurant Admin — Units, Catalog & Photos | 4/4 | Complete   | 2026-06-16 |
-| 4. Per-Unit Availability Management | 0/TBD | Not started | - |
+| 4. Per-Unit Availability Management | 0/2 | Not started | - |
 | 5. Public Customer Menu — Selection, Browsing & Cart | 0/TBD | Not started | - |
 | 6. WhatsApp Order Generation | 0/TBD | Not started | - |
