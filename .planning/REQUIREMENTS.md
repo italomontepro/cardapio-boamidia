@@ -24,11 +24,11 @@ Requirements for initial release. Each maps to roadmap phases.
 | UNIT-01 | Phase 3 | Pending |
 | UNIT-02 | Phase 3 | Pending |
 | UNIT-03 | Phase 3 | Pending |
-| CTLG-01 | Phase 3 | Pending |
-| CTLG-02 | Phase 3 | Pending |
-| CTLG-03 | Phase 3 | Pending |
-| CTLG-04 | Phase 3 | Pending |
-| CTLG-05 | Phase 3 | Pending |
+| CTLG-01 | Phase 3 | Complete |
+| CTLG-02 | Phase 3 | Complete |
+| CTLG-03 | Phase 3 | Complete |
+| CTLG-04 | Phase 3 | Complete |
+| CTLG-05 | Phase 3 | Complete |
 | CTLG-06 | Phase 3 | Pending |
 | CTLG-07 | Phase 4 | Pending |
 | MENU-01 | Phase 5 | Pending |
