@@ -18,7 +18,7 @@ Requirements for initial release. Each maps to roadmap phases.
 | PLAT-01 | Phase 2 | Complete |
 | PLAT-02 | Phase 2 | Complete |
 | PLAT-03 | Phase 2 | Complete |
-| PLAT-04 | Phase 2 | Pending |
+| PLAT-04 | Phase 2 | Complete |
 | PLAT-05 | Phase 2 | Complete |
 
 | UNIT-01 | Phase 3 | Pending |

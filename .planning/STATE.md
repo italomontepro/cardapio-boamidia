@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Completed 02-02-PLAN.md (Server Actions: createRestaurant, updateRestaurant, toggleRestaurantActive)"
-last_updated: "2026-06-16T04:31:37.435Z"
+stopped_at: "Completed 02-04 tasks 1-2; awaiting human-verify checkpoint (Task 3: D-06, D-12, end-to-end create flow)"
+last_updated: "2026-06-16T07:45:39.787Z"
 last_activity: 2026-06-16
 progress:
   total_phases: 6
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 9
-  completed_plans: 8
+  completed_plans: 9
   percent: 100
 ---
 
@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-06-15)
 ## Current Position
 
 Phase: 02 (platform-super-admin-restaurant-provisioning) — EXECUTING
-Plan: 2 of 4
+Plan: 3 of 4
 Status: Ready to execute
 Last activity: 2026-06-16
 
@@ -59,6 +59,7 @@ Progress: [██████████] 100%
 | Phase 02 P01 | 12 | 3 tasks | 9 files |
 | Phase 02-platform-super-admin-restaurant-provisioning P03 | 5 | 2 tasks | 3 files |
 | Phase 02-platform-super-admin-restaurant-provisioning P02 | 5 | 2 tasks | 3 files |
+| Phase 02-platform-super-admin-restaurant-provisioning P04 | 182 | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -82,6 +83,9 @@ Recent decisions affecting current work:
 - [Phase 02-platform-super-admin-restaurant-provisioning]: verify-auth.ts replicates gate SELECT chain (not calling login()) to avoid redirect() throwing in Node.js script context
 - [Phase 02-platform-super-admin-restaurant-provisioning]: createRestaurant uses db.transaction() wrapping both Postgres inserts with Auth API inside callback; single deleteUser compensation path on throw (Pattern 2 refined from RESEARCH)
 - [Phase 02-platform-super-admin-restaurant-provisioning]: createAdminClient() gains conditional ws transport shim (typeof WebSocket === 'undefined') — plan explicitly flagged this fallback; needed when Server Actions are imported from tsx scripts on Node.js 20
+- [Phase 02-platform-super-admin-restaurant-provisioning]: Split RestaurantFormDialog into CreateForm/EditForm sub-components to avoid react-hook-form union type issues with zodResolver
+- [Phase 02-platform-super-admin-restaurant-provisioning]: Admin count query uses second RLS-scoped supabase admin_users query aggregated in JS — preserves D-09 security proof, no Drizzle in listing page
+- [Phase 02-platform-super-admin-restaurant-provisioning]: Replaced slugify dependency (uninstalled) with inline NFD normalization in slug.ts — handles pt-BR characters identically without external package
 
 ### Pending Todos
 
@@ -100,6 +104,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-16T04:31:37.432Z
-Stopped at: Completed 02-02-PLAN.md (Server Actions: createRestaurant, updateRestaurant, toggleRestaurantActive)
+Last session: 2026-06-16T07:45:39.784Z
+Stopped at: Completed 02-04 tasks 1-2; awaiting human-verify checkpoint (Task 3: D-06, D-12, end-to-end create flow)
 Resume file: None
