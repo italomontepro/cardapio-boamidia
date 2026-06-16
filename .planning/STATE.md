@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 02 UI-SPEC approved
-last_updated: "2026-06-15T22:44:33.452Z"
+stopped_at: "Completed 02-01-PLAN.md: foundation, shared modules, verify scaffold"
+last_updated: "2026-06-16T04:17:44.322Z"
 last_activity: 2026-06-15
 progress:
   total_phases: 6
   completed_phases: 1
-  total_plans: 5
-  completed_plans: 5
+  total_plans: 9
+  completed_plans: 6
   percent: 100
 ---
 
@@ -56,6 +56,7 @@ Progress: [██████████] 100%
 | Phase 01 P03 | 12 | 1 tasks | 3 files |
 | Phase 01 P04 | 13 | 2 tasks | 7 files |
 | Phase 01 P05 | 18 | 4 tasks | 9 files |
+| Phase 02 P01 | 12 | 3 tasks | 9 files |
 
 ## Accumulated Context
 
@@ -72,6 +73,9 @@ Recent decisions affecting current work:
 - [Phase 01-foundation-data-model-rls-auth-roles P03]: RLS enabled on all 6 tables via raw SQL migration 0002_rls_policies.sql; is_super_admin() and current_admin_restaurant_id() helper functions are SECURITY DEFINER/LANGUAGE plpgsql (avoids recursion pitfall); default-deny verified live via anon REST queries returning [] for all tables
 - [Phase 01-foundation-data-model-rls-auth-roles P04]: @supabase/ssr server/browser client factories + updateSession middleware protecting /admin and /painel implemented; scripts/seed.ts creates 1 super_admin + 2 restaurant_admins (2 distinct restaurants) via Admin API, verified live in Postgres (D-04); ws/@types/ws added as dev deps for Node 20 realtime client compatibility
 - [Phase 01-foundation-data-model-rls-auth-roles P05]: login()/logout() Server Actions, getCurrentAdmin() session helper, /admin/login (single form, D-08), and role-scoped /admin (super_admin, all restaurants) + /painel (restaurant_admin, own restaurant) landing pages implemented relying entirely on RLS for tenant scoping (D-09); /admin dashboard moved into a (dashboard) route group to avoid a redirect loop with /admin/login; scripts/verify-auth.ts confirms AUTH-01/02/03 all PASS live, and all 6 tables remain RLS-enabled (D-03) -- Phase 1 complete
+- [Phase 02-01]: createAdminClient() omits ws realtime shim — Next.js server runtime has native WebSocket; add shim only if runtime errors appear in Plan 02
+- [Phase 02-01]: updateRestaurantSchema excludes adminEmail — admin provisioning is create-only per D-10, no multi-admin management in v1
+- [Phase 02-01]: shadcn switch intentionally NOT installed — D-12 requires asymmetric UX: activate=Button, deactivate=Button+AlertDialog confirm
 
 ### Pending Todos
 
@@ -90,6 +94,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-15T22:44:33.445Z
-Stopped at: Phase 02 UI-SPEC approved
-Resume file: .planning/phases/02-platform-super-admin-restaurant-provisioning/02-UI-SPEC.md
+Last session: 2026-06-16T04:17:44.319Z
+Stopped at: Completed 02-01-PLAN.md: foundation, shared modules, verify scaffold
+Resume file: None
