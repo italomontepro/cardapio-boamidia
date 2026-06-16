@@ -100,7 +100,7 @@ export function CardapioAccordion({ categories }: CardapioAccordionProps) {
             </div>
 
             {/* Accordion trigger for the category name */}
-            <AccordionTrigger className="flex-1 font-semibold text-base">
+            <AccordionTrigger className="flex-1 font-semibold text-base tracking-tight py-0">
               {c.name}
               <span className="ml-2 text-xs text-muted-foreground font-normal">
                 ({c.products.length} {c.products.length === 1 ? 'produto' : 'produtos'})
@@ -141,7 +141,7 @@ export function CardapioAccordion({ categories }: CardapioAccordionProps) {
                       <div className="flex items-center gap-2">
                         <span className="font-medium text-sm">{p.name}</span>
                         {p.isFeatured && (
-                          <span className="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800">
+                          <span className="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-700">
                             Destaque
                           </span>
                         )}

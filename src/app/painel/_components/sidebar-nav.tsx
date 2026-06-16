@@ -14,7 +14,7 @@ const navLinks = [
 export function SidebarNav() {
   const pathname = usePathname()
   return (
-    <nav className="w-48 shrink-0 border-r px-3 py-4">
+    <nav className="w-52 shrink-0 border-r bg-sidebar px-3 pt-6 pb-4">
       <ul className="flex flex-col gap-1">
         {navLinks.map(({ href, label, exact }) => {
           const isActive = exact ? pathname === href : pathname.startsWith(href)
@@ -23,10 +23,10 @@ export function SidebarNav() {
               <Link
                 href={href}
                 className={cn(
-                  'block rounded px-3 py-2 text-sm transition-colors',
+                  'block rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                   isActive
-                    ? 'bg-accent text-accent-foreground font-medium'
-                    : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                    ? 'bg-accent text-accent-foreground'
+                    : 'text-muted-foreground hover:bg-accent/60 hover:text-foreground'
                 )}
               >
                 {label}

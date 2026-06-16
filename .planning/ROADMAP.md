@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation — Data Model, RLS & Auth Roles** - Multi-tenant schema, Row Level Security, and admin login for both roles is in place and verified secure (completed 2026-06-15)
 - [x] **Phase 2: Platform Super-Admin — Restaurant Provisioning** - Super admin can log in and fully manage the list of restaurants on the platform (completed 2026-06-16)
 - [x] **Phase 3: Restaurant Admin — Units, Catalog & Photos** - Restaurant admin can log in and build out their units, categories, products, and product photos (completed 2026-06-16)
-- [ ] **Phase 4: Per-Unit Availability Management** - Restaurant admin can control which products are available at which units
+- [x] **Phase 4: Per-Unit Availability Management** - Restaurant admin can control which products are available at which units (completed 2026-06-16)
 - [ ] **Phase 5: Public Customer Menu — Selection, Browsing & Cart** - Customers can open a restaurant's link, pick a unit, browse the availability-filtered menu, and build a cart
 - [ ] **Phase 6: WhatsApp Order Generation** - Customers can send a complete, well-formatted order from their cart directly to the chosen unit's WhatsApp
 
@@ -81,7 +81,7 @@ Plans:
 **Plans**: 2 plans
 Plans:
 - [x] 04-01-PLAN.md — Wave 0 setup: shadcn switch/select/tooltip, Disponibilidade nav link, verify-availability script
-- [ ] 04-02-PLAN.md — toggleAvailability Server Action + /painel/disponibilidade page + desktop matrix & mobile views (optimistic)
+- [x] 04-02-PLAN.md — toggleAvailability Server Action + /painel/disponibilidade page + desktop matrix & mobile views (optimistic)
 **UI hint**: yes
 
 ### Phase 5: Public Customer Menu — Selection, Browsing & Cart
@@ -119,6 +119,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 1. Foundation — Data Model, RLS & Auth Roles | 5/5 | Complete   | 2026-06-15 |
 | 2. Platform Super-Admin — Restaurant Provisioning | 4/4 | Complete   | 2026-06-16 |
 | 3. Restaurant Admin — Units, Catalog & Photos | 4/4 | Complete   | 2026-06-16 |
-| 4. Per-Unit Availability Management | 0/2 | Not started | - |
+| 4. Per-Unit Availability Management | 2/2 | Complete   | 2026-06-16 |
 | 5. Public Customer Menu — Selection, Browsing & Cart | 0/TBD | Not started | - |
 | 6. WhatsApp Order Generation | 0/TBD | Not started | - |

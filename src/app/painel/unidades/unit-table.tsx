@@ -27,19 +27,19 @@ function formatWhatsapp(number: string): string {
 
 export function UnitTable({ units }: UnitTableProps) {
   return (
-    <Table>
+    <Table className="[&_tbody]:divide-y [&_tbody]:divide-border [&_thead_tr]:border-b [&_tr]:border-0">
       <TableHeader>
-        <TableRow>
-          <TableHead>Nome</TableHead>
-          <TableHead>Endereço</TableHead>
-          <TableHead>WhatsApp</TableHead>
-          <TableHead>Horários</TableHead>
-          <TableHead>Ações</TableHead>
+        <TableRow className="hover:bg-transparent">
+          <TableHead className="text-xs uppercase tracking-wide text-muted-foreground font-medium">Nome</TableHead>
+          <TableHead className="text-xs uppercase tracking-wide text-muted-foreground font-medium">Endereço</TableHead>
+          <TableHead className="text-xs uppercase tracking-wide text-muted-foreground font-medium">WhatsApp</TableHead>
+          <TableHead className="text-xs uppercase tracking-wide text-muted-foreground font-medium">Horários</TableHead>
+          <TableHead className="text-xs uppercase tracking-wide text-muted-foreground font-medium">Ações</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {units.map((unit) => (
-          <TableRow key={unit.id}>
+          <TableRow key={unit.id} className="hover:bg-muted/50">
             <TableCell className="font-medium">{unit.name}</TableCell>
             <TableCell className="text-muted-foreground">{unit.address ?? '—'}</TableCell>
             <TableCell>{formatWhatsapp(unit.whatsappNumber)}</TableCell>

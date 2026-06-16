@@ -30,15 +30,14 @@ export default async function UnidadesPage() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-semibold">Unidades</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">Unidades</h1>
         <UnitFormDialog mode="create" />
       </div>
 
       {units.length === 0 ? (
-        <div className="flex flex-col items-center justify-center gap-2 rounded-lg border border-dashed p-8 text-center">
-          <p className="text-sm text-muted-foreground">
-            Nenhuma unidade cadastrada. Cadastre a primeira filial do seu restaurante.
-          </p>
+        <div className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed p-12 text-center">
+          <p className="text-sm font-medium text-foreground">Nenhuma unidade ainda</p>
+          <p className="text-sm text-muted-foreground mt-1">Cadastre a primeira filial do seu restaurante.</p>
         </div>
       ) : (
         <UnitTable units={units} />

@@ -26,7 +26,7 @@ export default async function LoginPage({
 
   return (
     <div className="flex flex-1 items-center justify-center p-4">
-      <Card className="w-full max-w-sm">
+      <Card className="w-full max-w-sm shadow-sm rounded-2xl">
         <CardHeader>
           <CardTitle>Login Administrativo</CardTitle>
           <CardDescription>
