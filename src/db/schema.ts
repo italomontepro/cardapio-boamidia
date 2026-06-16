@@ -84,3 +84,37 @@ export const productAvailability = pgTable('product_availability', {
   index('idx_product_availability_product_id').on(table.productId),
   index('idx_product_availability_unit_id').on(table.unitId),
 ])
+
+// ---------------------------------------------------------------------------
+// Drizzle relations() — metadata only, no SQL migration needed.
+// Enables db.query.X.findMany({ with: { ... } }) relational API.
+// Extended by Phase 3 plans (03-02 units, 03-03 categories/products, 03-04 photos).
+// ---------------------------------------------------------------------------
+import { relations } from 'drizzle-orm'
+
+export const restaurantsRelations = relations(restaurants, ({ many }) => ({
+  units: many(units),
+  categories: many(categories),
+  products: many(products),
+}))
+
+export const unitsRelations = relations(units, ({ one, many }) => ({
+  restaurant: one(restaurants, { fields: [units.restaurantId], references: [restaurants.id] }),
+  productAvailability: many(productAvailability),
+}))
+
+export const categoriesRelations = relations(categories, ({ one, many }) => ({
+  restaurant: one(restaurants, { fields: [categories.restaurantId], references: [restaurants.id] }),
+  products: many(products),
+}))
+
+export const productsRelations = relations(products, ({ one, many }) => ({
+  restaurant: one(restaurants, { fields: [products.restaurantId], references: [restaurants.id] }),
+  category: one(categories, { fields: [products.categoryId], references: [categories.id] }),
+  productAvailability: many(productAvailability),
+}))
+
+export const productAvailabilityRelations = relations(productAvailability, ({ one }) => ({
+  product: one(products, { fields: [productAvailability.productId], references: [products.id] }),
+  unit: one(units, { fields: [productAvailability.unitId], references: [units.id] }),
+}))
