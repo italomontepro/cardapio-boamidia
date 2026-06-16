@@ -64,7 +64,7 @@ Plans:
   6. Restaurant admin can mark a product as "featured/promo"
 **Plans**: 4 plans
 Plans:
-- [ ] 03-01-PLAN.md — Setup: shadcn components, next/image remotePatterns, Drizzle relations, verify-catalog stub, Storage bucket
+- [x] 03-01-PLAN.md — Setup: shadcn components, next/image remotePatterns, Drizzle relations, verify-catalog stub, Storage bucket
 - [ ] 03-02-PLAN.md — Sidebar layout + Units CRUD (WhatsApp validation, hours)
 - [ ] 03-03-PLAN.md — Categories CRUD + reorder (sort_order swap)
 - [ ] 03-04-PLAN.md — Products CRUD + photo upload + accordion cardapio
