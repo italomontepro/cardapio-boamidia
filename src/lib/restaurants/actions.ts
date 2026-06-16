@@ -183,7 +183,9 @@ export async function updateRestaurant(input: UpdateRestaurantInput): Promise<
     }
   }
 
-  revalidatePath('/admin')
+  // revalidatePath is a Next.js App Router cache hint — safe to skip outside
+  // that runtime (e.g., tsx integration scripts that call this action directly).
+  try { revalidatePath('/admin') } catch { /* not in Next.js runtime — skip */ }
   return { success: true }
 }
 
@@ -200,6 +202,8 @@ export async function toggleRestaurantActive(
   isActive: boolean,
 ): Promise<{ success: true }> {
   await db.update(restaurants).set({ isActive }).where(eq(restaurants.id, id))
-  revalidatePath('/admin')
+  // revalidatePath is a Next.js App Router cache hint — safe to skip outside
+  // that runtime (e.g., tsx integration scripts that call this action directly).
+  try { revalidatePath('/admin') } catch { /* not in Next.js runtime — skip */ }
   return { success: true }
 }
