@@ -80,7 +80,7 @@ Plans:
   3. A documented default applies when no explicit availability record exists for a product/unit pair
 **Plans**: 2 plans
 Plans:
-- [ ] 04-01-PLAN.md — Wave 0 setup: shadcn switch/select/tooltip, Disponibilidade nav link, verify-availability script
+- [x] 04-01-PLAN.md — Wave 0 setup: shadcn switch/select/tooltip, Disponibilidade nav link, verify-availability script
 - [ ] 04-02-PLAN.md — toggleAvailability Server Action + /painel/disponibilidade page + desktop matrix & mobile views (optimistic)
 **UI hint**: yes
 
