@@ -17,7 +17,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **PLAT-01**: Super admin pode criar um novo restaurante com nome e slug único (link)
 - [ ] **PLAT-02**: Super admin pode editar dados de um restaurante existente
-- [ ] **PLAT-03**: Super admin pode ativar/desativar um restaurante
+- [x] **PLAT-03**: Super admin pode ativar/desativar um restaurante
 - [ ] **PLAT-04**: Super admin pode listar todos os restaurantes cadastrados na plataforma
 - [ ] **PLAT-05**: Ao criar um restaurante, super admin provisiona o primeiro usuário admin daquele restaurante
 
@@ -94,7 +94,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-03 | Phase 1 | Complete |
 | PLAT-01 | Phase 2 | Pending |
 | PLAT-02 | Phase 2 | Pending |
-| PLAT-03 | Phase 2 | Pending |
+| PLAT-03 | Phase 2 | Complete |
 | PLAT-04 | Phase 2 | Pending |
 | PLAT-05 | Phase 2 | Pending |
 | UNIT-01 | Phase 3 | Pending |
