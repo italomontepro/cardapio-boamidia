@@ -1,25 +1,19 @@
-import { createClient } from '@/lib/supabase/server'
+import { db } from '@/db'
+import { categories, products } from '@/db/schema'
+import { eq, asc } from 'drizzle-orm'
+import { getCurrentAdmin } from '@/lib/auth/session'
 import { CategoryFormDialog } from './category-form-dialog'
-import { CategoryList } from './category-list'
-
-type CategoryRow = {
-  id: string
-  name: string
-  sortOrder: number
-}
+import { CardapioAccordion } from './cardapio-accordion'
 
 export default async function CardapioPage() {
-  const supabase = await createClient()
-  const { data } = await supabase
-    .from('categories')
-    .select('id, name, sort_order')
-    .order('sort_order', { ascending: true })
+  const admin = await getCurrentAdmin()
+  if (!admin?.restaurantId) return null
 
-  const categories: CategoryRow[] = (data ?? []).map((c) => ({
-    id: c.id,
-    name: c.name,
-    sortOrder: c.sort_order,
-  }))
+  const cats = await db.query.categories.findMany({
+    where: eq(categories.restaurantId, admin.restaurantId),
+    orderBy: [asc(categories.sortOrder)],
+    with: { products: { orderBy: [asc(products.sortOrder)] } },
+  })
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
@@ -28,12 +22,12 @@ export default async function CardapioPage() {
         <CategoryFormDialog mode="create" />
       </div>
 
-      {categories.length === 0 ? (
+      {cats.length === 0 ? (
         <div className="border-2 border-dashed rounded-lg p-10 text-center text-muted-foreground">
           Nenhuma categoria cadastrada. Crie a primeira categoria do seu cardápio.
         </div>
       ) : (
-        <CategoryList categories={categories} />
+        <CardapioAccordion categories={cats} />
       )}
     </div>
   )
