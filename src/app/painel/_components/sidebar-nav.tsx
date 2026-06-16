@@ -8,6 +8,7 @@ const navLinks = [
   { href: '/painel', label: 'Visão Geral', exact: true },
   { href: '/painel/unidades', label: 'Unidades', exact: false },
   { href: '/painel/cardapio', label: 'Cardápio', exact: false },
+  { href: '/painel/disponibilidade', label: 'Disponibilidade', exact: false },
 ]
 
 export function SidebarNav() {
