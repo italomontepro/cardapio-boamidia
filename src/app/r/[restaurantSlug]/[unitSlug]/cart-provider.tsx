@@ -1,5 +1,5 @@
 'use client'
-import { createContext, useContext, useEffect, useReducer, useState } from 'react'
+import { createContext, useContext, useEffect, useReducer, useRef } from 'react'
 import type { CartItem } from '@/lib/menu/cart-types'
 
 type CartState = { items: CartItem[] }
@@ -43,7 +43,7 @@ const CartContext = createContext<{ state: CartState; dispatch: React.Dispatch<C
 
 export function CartProvider({ children, storageKey }: { children: React.ReactNode; storageKey: string }) {
   const [state, dispatch] = useReducer(reducer, { items: [] })
-  const [hydrated, setHydrated] = useState(false)
+  const hydratedRef = useRef(false)
 
   useEffect(() => {
     const raw = localStorage.getItem(storageKey)
@@ -54,12 +54,12 @@ export function CartProvider({ children, storageKey }: { children: React.ReactNo
         /* corrupt, ignore */
       }
     }
-    setHydrated(true)
+    hydratedRef.current = true
   }, [storageKey])
 
   useEffect(() => {
-    if (hydrated) localStorage.setItem(storageKey, JSON.stringify(state.items))
-  }, [state, hydrated, storageKey])
+    if (hydratedRef.current) localStorage.setItem(storageKey, JSON.stringify(state.items))
+  }, [state, storageKey])
 
   return <CartContext.Provider value={{ state, dispatch }}>{children}</CartContext.Provider>
 }
