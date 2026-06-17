@@ -14,6 +14,7 @@ Um cliente final consegue acessar o link de um restaurante, escolher a unidade, 
 
 - [x] Admin geral faz login em painel próprio — Validated in Phase 1: Foundation — Data Model, RLS & Auth Roles (AUTH-01)
 - [x] Admin do restaurante faz login em painel próprio, restrito ao seu restaurante — Validated in Phase 1: Foundation — Data Model, RLS & Auth Roles (AUTH-02, AUTH-03 — isolamento entre tenants confirmado via RLS)
+- [x] Admin do restaurante define a localização geográfica exata de cada unidade (lat/lng) via mapa interativo, num formulário de cadastro/edição em etapas — Validated in Phase 04.1: Localização de unidades via mapa (inserida — pré-requisito da Fase 5, que precisa de lat/lng para sugerir a unidade mais próxima ao cliente)
 
 ### Active
 
@@ -55,6 +56,7 @@ Um cliente final consegue acessar o link de um restaurante, escolher a unidade, 
 | Pedido enviado via WhatsApp (wa.me), sem persistência no v1 | Simplicidade máxima para o MVP; evita complexidade de gestão de pedidos antes de validar o core | — Pending |
 | Upload de imagem para fotos de produtos | Melhor experiência para o admin do restaurante vs. colar URLs | — Pending |
 | Dois níveis de admin (geral da plataforma e por restaurante) | Reflete o modelo de negócio SaaS: plataforma gerencia clientes, cliente gerencia seu próprio cardápio | Validated in Phase 1 — RLS + roles implementados, AUTH-01/02/03 confirmados |
+| Leaflet + OpenStreetMap (sem API key) para seleção de localização de unidades; geocoding via Nominatim | Gratuito, sem custo recorrente, alinhado com a filosofia "simplicidade máxima" do MVP | Validated in Phase 04.1 — mapa interativo + geocoding funcionando, lat/lng persistido (mode:'number') |
 
 ## Evolution
 
@@ -74,4 +76,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-15 after Phase 1 completion*
+*Last updated: 2026-06-17 after Phase 04.1 completion*
