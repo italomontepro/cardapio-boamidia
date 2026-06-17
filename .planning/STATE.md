@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 04.1-03-PLAN.md
-last_updated: "2026-06-17T06:24:04.738Z"
+status: verifying
+stopped_at: Completed 04.1-04-PLAN.md
+last_updated: "2026-06-17T06:28:46.100Z"
 last_activity: 2026-06-17
 progress:
   total_phases: 7
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 19
-  completed_plans: 18
+  completed_plans: 19
   percent: 100
 ---
 
@@ -27,7 +27,7 @@ See: .planning/PROJECT.md (updated 2026-06-15)
 
 Phase: 04.1 (localizacao-de-unidades-via-mapa-lat-lng-e-formulario-em-etapas-no-admin) — EXECUTING
 Plan: 4 of 4
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-06-17
 
 Progress: [██████████] 100%
@@ -66,6 +66,7 @@ Progress: [██████████] 100%
 | Phase 04.1 P01 | 12min | 2 tasks | 7 files |
 | Phase 04.1 P02 | 4min | 2 tasks | 3 files |
 | Phase 04.1 P03 | 6min | 2 tasks | 2 files |
+| Phase 04.1 P04 | 9min | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -104,6 +105,7 @@ Recent decisions affecting current work:
 - [Phase 04.1-localizacao-de-unidades-via-mapa-lat-lng-e-formulario-em-etapas-no-admin]: P01: units.lat/units.lng added as nullable numeric(10,7) mode:'number' columns via migration 0003; leaflet/react-leaflet/@types/leaflet installed; scripts/verify-units-location.ts is the standing Wave 0 regression check for this phase, with geocode assertions skip-tolerant until Plan 02 creates src/lib/units/geocode.ts
 - [Phase 04.1-localizacao-de-unidades-via-mapa-lat-lng-e-formulario-em-etapas-no-admin]: P02: upsertUnitSchema gained optional/nullable lat/lng (-90..90/-180..180); createUnit/updateUnit persist coordinates (null when omitted); src/lib/units/geocode.ts wraps Nominatim server-side with mandatory User-Agent; geocodeUnitAddress Server Action returns {lat,lng,displayName} or {error} for the Plan 03 map wizard
 - [Phase 04.1-localizacao-de-unidades-via-mapa-lat-lng-e-formulario-em-etapas-no-admin]: P03: unit-location-map.tsx (real Leaflet MapContainer/draggable Marker/Recenter) and unit-location-map-loader.tsx (next/dynamic ssr:false) created exactly per plan; Plan 04 must import UnitLocationMap only from the loader file
+- [Phase 04.1-localizacao-de-unidades-via-mapa-lat-lng-e-formulario-em-etapas-no-admin]: P04: unit-form-dialog.tsx rewritten as a 3-step wizard (Básico/Contato-Horário/Localização) inside one useForm+zodResolver instance, gated via form.trigger(STEP_FIELDS); Step 3 embeds UnitLocationMap with auto-geocode-once-on-entry (useRef guard) + manual Buscar search + draggable pin, Brazil-center fallback when no coords; unit-table.tsx shows a discreet 'Sem localização' outline badge when lat/lng is null — Phase 04.1 feature-complete
 
 ### Pending Todos
 
@@ -122,6 +124,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-17T06:24:04.735Z
-Stopped at: Completed 04.1-03-PLAN.md
+Last session: 2026-06-17T06:28:46.097Z
+Stopped at: Completed 04.1-04-PLAN.md
 Resume file: None
