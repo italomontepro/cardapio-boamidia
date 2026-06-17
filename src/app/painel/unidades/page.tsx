@@ -9,6 +9,8 @@ export interface UnitRow {
   address: string | null
   whatsappNumber: string
   hours: string | null
+  lat: number | null
+  lng: number | null
 }
 
 export default async function UnidadesPage() {
@@ -16,7 +18,7 @@ export default async function UnidadesPage() {
 
   const { data } = await supabase
     .from('units')
-    .select('id, name, address, whatsapp_number, hours')
+    .select('id, name, address, whatsapp_number, hours, lat, lng')
     .order('name')
 
   const units: UnitRow[] = (data ?? []).map((row) => ({
@@ -25,6 +27,8 @@ export default async function UnidadesPage() {
     address: row.address ?? null,
     whatsappNumber: row.whatsapp_number ?? '',
     hours: row.hours ?? null,
+    lat: row.lat == null ? null : Number(row.lat),
+    lng: row.lng == null ? null : Number(row.lng),
   }))
 
   return (

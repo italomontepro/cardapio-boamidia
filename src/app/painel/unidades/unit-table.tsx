@@ -9,6 +9,7 @@ import {
   TableRow,
   TableCell,
 } from '@/components/ui/table'
+import { Badge } from '@/components/ui/badge'
 import type { UnitRow } from './page'
 import { UnitFormDialog } from './unit-form-dialog'
 import { UnitDeleteDialog } from './unit-delete-dialog'
@@ -40,7 +41,14 @@ export function UnitTable({ units }: UnitTableProps) {
       <TableBody>
         {units.map((unit) => (
           <TableRow key={unit.id} className="hover:bg-muted/50">
-            <TableCell className="font-medium">{unit.name}</TableCell>
+            <TableCell className="font-medium">
+              <div className="flex items-center gap-2">
+                <span>{unit.name}</span>
+                {(unit.lat == null || unit.lng == null) && (
+                  <Badge variant="outline" className="text-muted-foreground font-normal">Sem localização</Badge>
+                )}
+              </div>
+            </TableCell>
             <TableCell className="text-muted-foreground">{unit.address ?? '—'}</TableCell>
             <TableCell>{formatWhatsapp(unit.whatsappNumber)}</TableCell>
             <TableCell className="text-muted-foreground">{unit.hours ?? '—'}</TableCell>
