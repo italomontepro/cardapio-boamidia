@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 04.1 context gathered
-last_updated: "2026-06-17T05:43:51.113Z"
-last_activity: 2026-06-16
+stopped_at: Completed 04.1-01-PLAN.md
+last_updated: "2026-06-17T06:15:52.576Z"
+last_activity: 2026-06-17
 progress:
   total_phases: 7
   completed_phases: 4
-  total_plans: 15
-  completed_plans: 15
+  total_plans: 19
+  completed_plans: 16
   percent: 100
 ---
 
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-06-15)
 
 **Core value:** Um cliente final consegue acessar o link de um restaurante, escolher a unidade, montar um pedido pelo cardápio e enviá-lo via WhatsApp direto para aquela unidade.
-**Current focus:** Phase 03 — restaurant-admin-units-catalog-photos
+**Current focus:** Phase 04.1 — localizacao-de-unidades-via-mapa-lat-lng-e-formulario-em-etapas-no-admin
 
 ## Current Position
 
-Phase: 03 (restaurant-admin-units-catalog-photos) — EXECUTING
-Plan: 4 of 4
+Phase: 04.1 (localizacao-de-unidades-via-mapa-lat-lng-e-formulario-em-etapas-no-admin) — EXECUTING
+Plan: 2 of 4
 Status: Ready to execute
-Last activity: 2026-06-16
+Last activity: 2026-06-17
 
 Progress: [██████████] 100%
 
@@ -63,6 +63,7 @@ Progress: [██████████] 100%
 | Phase 03 P03-04 | 25 | 2 tasks | 7 files |
 | Phase 04-per-unit-availability-management P01 | 5 | 2 tasks | 6 files |
 | Phase 04 P02 | 15 | 3 tasks | 4 files |
+| Phase 04.1 P01 | 12min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -98,6 +99,7 @@ Recent decisions affecting current work:
 - [Phase 04-per-unit-availability-management]: shadcn Switch/Select/Tooltip installed via npx shadcn@latest add for availability UI Wave 1
 - [Phase 04-per-unit-availability-management]: verify-availability.ts mirrors verify-catalog.ts pattern: dotenv walk-up + dynamic imports after config(); 6 CTLG-07 sparse-exclusion assertions pass live
 - [Phase 04]: base-ui Select onValueChange passes string|null; wrapped with ?? '' in availability-mobile.tsx
+- [Phase 04.1-localizacao-de-unidades-via-mapa-lat-lng-e-formulario-em-etapas-no-admin]: P01: units.lat/units.lng added as nullable numeric(10,7) mode:'number' columns via migration 0003; leaflet/react-leaflet/@types/leaflet installed; scripts/verify-units-location.ts is the standing Wave 0 regression check for this phase, with geocode assertions skip-tolerant until Plan 02 creates src/lib/units/geocode.ts
 
 ### Pending Todos
 
@@ -116,6 +118,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-17T05:43:51.100Z
-Stopped at: Phase 04.1 context gathered
-Resume file: .planning/phases/04.1-localizacao-de-unidades-via-mapa-lat-lng-e-formulario-em-etapas-no-admin/04.1-CONTEXT.md
+Last session: 2026-06-17T06:15:52.573Z
+Stopped at: Completed 04.1-01-PLAN.md
+Resume file: None
