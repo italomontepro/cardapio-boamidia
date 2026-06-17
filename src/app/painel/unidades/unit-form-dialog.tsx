@@ -1,12 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { parsePhoneNumber } from 'libphonenumber-js/min'
-import { createUnit, updateUnit } from '@/lib/units/actions'
+import { createUnit, updateUnit, geocodeUnitAddress } from '@/lib/units/actions'
 import { upsertUnitSchema, type UpsertUnitInput } from '@/lib/units/schema'
+import { UnitLocationMap } from './unit-location-map-loader'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -36,6 +37,8 @@ const STEP_TITLES: Record<1 | 2 | 3, string> = {
   3: 'Localização',
 }
 
+const BR_CENTER = { lat: -14.235, lng: -51.9253 }
+
 export function UnitFormDialog({ mode, unit }: UnitFormDialogProps) {
   const router = useRouter()
   const [open, setOpen] = useState(false)
@@ -43,6 +46,10 @@ export function UnitFormDialog({ mode, unit }: UnitFormDialogProps) {
   const [step, setStep] = useState<1 | 2 | 3>(1)
 
   const isCreate = mode === 'create'
+  const [searchValue, setSearchValue] = useState(() => unit?.address ?? '')
+  const [geoStatus, setGeoStatus] = useState<string | null>(null)
+  const [geoLoading, setGeoLoading] = useState(false)
+  const autoGeoDone = useRef(false)
 
   function getDefaultWhatsapp(): string {
     if (!unit?.whatsappNumber) return ''
@@ -80,12 +87,17 @@ export function UnitFormDialog({ mode, unit }: UnitFormDialogProps) {
 
   function openDialog() {
     setStep(1)
+    autoGeoDone.current = false
+    setGeoStatus(null)
+    setSearchValue(unit?.address ?? '')
     setOpen(true)
   }
 
   function closeDialog() {
     setOpen(false)
     setStep(1)
+    autoGeoDone.current = false
+    setGeoStatus(null)
   }
 
   async function goNext() {
@@ -97,6 +109,39 @@ export function UnitFormDialog({ mode, unit }: UnitFormDialogProps) {
   function goBack() {
     setStep((s) => (s > 1 ? ((s - 1) as 1 | 2 | 3) : s))
   }
+
+  const lat = watch('lat')
+  const lng = watch('lng')
+  const mapLat = lat ?? BR_CENTER.lat
+  const mapLng = lng ?? BR_CENTER.lng
+
+  async function runGeocode(query: string) {
+    const q = query.trim()
+    if (!q) {
+      setGeoStatus('Digite um endereço para buscar.')
+      return
+    }
+    setGeoLoading(true)
+    setGeoStatus('Buscando endereço…')
+    const res = await geocodeUnitAddress(q)
+    setGeoLoading(false)
+    if ('error' in res) {
+      setGeoStatus(res.error)
+      return
+    }
+    setValue('lat', res.lat, { shouldValidate: true })
+    setValue('lng', res.lng, { shouldValidate: true })
+    setGeoStatus(null)
+  }
+
+  useEffect(() => {
+    if (step === 3 && !autoGeoDone.current && lat == null && lng == null) {
+      autoGeoDone.current = true
+      const addr = getValues('address')
+      if (addr && addr.trim()) runGeocode(addr)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step])
 
   async function onSubmit(data: UpsertUnitInput) {
     setFormError(null)
@@ -219,8 +264,35 @@ export function UnitFormDialog({ mode, unit }: UnitFormDialogProps) {
             </div>
           </div>
 
-          <div style={{ display: step === 3 ? 'block' : 'none' }} className="flex flex-col gap-4">
-            <div data-step3-map />
+          <div style={{ display: step === 3 ? 'block' : 'none' }} className="flex flex-col gap-4" data-step3-map>
+            <div className="flex gap-2">
+              <Input
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+                placeholder="Buscar endereço no mapa"
+              />
+              <Button
+                type="button"
+                variant="outline"
+                disabled={geoLoading}
+                onClick={() => runGeocode(searchValue)}
+              >
+                Buscar
+              </Button>
+            </div>
+            {geoStatus && <p className="text-sm text-muted-foreground">{geoStatus}</p>}
+
+            <UnitLocationMap
+              lat={mapLat}
+              lng={mapLng}
+              onChange={(newLat, newLng) => {
+                setValue('lat', newLat, { shouldValidate: true })
+                setValue('lng', newLng, { shouldValidate: true })
+              }}
+            />
+            <p className="text-xs text-muted-foreground">
+              Arraste o pino para ajustar a posição exata. Esta etapa é opcional — você pode salvar sem marcar.
+            </p>
           </div>
 
           <DialogFooter>
