@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: verifying
-stopped_at: Completed 04.1-04-PLAN.md
-last_updated: "2026-06-17T06:33:35.842Z"
+status: executing
+stopped_at: Completed 05-01-PLAN.md
+last_updated: "2026-06-17T16:07:13.663Z"
 last_activity: 2026-06-17
 progress:
   total_phases: 7
   completed_phases: 5
-  total_plans: 19
-  completed_plans: 19
+  total_plans: 23
+  completed_plans: 20
   percent: 100
 ---
 
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-06-15)
 
 **Core value:** Um cliente final consegue acessar o link de um restaurante, escolher a unidade, montar um pedido pelo cardápio e enviá-lo via WhatsApp direto para aquela unidade.
-**Current focus:** Phase 04.1 — localizacao-de-unidades-via-mapa-lat-lng-e-formulario-em-etapas-no-admin
+**Current focus:** Phase 05 — public-customer-menu-selection-browsing-cart
 
 ## Current Position
 
-Phase: 05
-Plan: Not started
-Status: Phase complete — ready for verification
+Phase: 05 (public-customer-menu-selection-browsing-cart) — EXECUTING
+Plan: 2 of 4
+Status: Ready to execute
 Last activity: 2026-06-17
 
 Progress: [██████████] 100%
@@ -67,6 +67,7 @@ Progress: [██████████] 100%
 | Phase 04.1 P02 | 4min | 2 tasks | 3 files |
 | Phase 04.1 P03 | 6min | 2 tasks | 2 files |
 | Phase 04.1 P04 | 9min | 3 tasks | 3 files |
+| Phase 05 P01 | 18min | 4 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -106,6 +107,7 @@ Recent decisions affecting current work:
 - [Phase 04.1-localizacao-de-unidades-via-mapa-lat-lng-e-formulario-em-etapas-no-admin]: P02: upsertUnitSchema gained optional/nullable lat/lng (-90..90/-180..180); createUnit/updateUnit persist coordinates (null when omitted); src/lib/units/geocode.ts wraps Nominatim server-side with mandatory User-Agent; geocodeUnitAddress Server Action returns {lat,lng,displayName} or {error} for the Plan 03 map wizard
 - [Phase 04.1-localizacao-de-unidades-via-mapa-lat-lng-e-formulario-em-etapas-no-admin]: P03: unit-location-map.tsx (real Leaflet MapContainer/draggable Marker/Recenter) and unit-location-map-loader.tsx (next/dynamic ssr:false) created exactly per plan; Plan 04 must import UnitLocationMap only from the loader file
 - [Phase 04.1-localizacao-de-unidades-via-mapa-lat-lng-e-formulario-em-etapas-no-admin]: P04: unit-form-dialog.tsx rewritten as a 3-step wizard (Básico/Contato-Horário/Localização) inside one useForm+zodResolver instance, gated via form.trigger(STEP_FIELDS); Step 3 embeds UnitLocationMap with auto-geocode-once-on-entry (useRef guard) + manual Buscar search + draggable pin, Brazil-center fallback when no coords; unit-table.tsx shows a discreet 'Sem localização' outline badge when lat/lng is null — Phase 04.1 feature-complete
+- [Phase 05-public-customer-menu-selection-browsing-cart]: P01: src/lib/menu/queries.ts (getRestaurantBySlug/getUnitsForRestaurant/getUnitBySlug/getMenuForUnit) and format.ts (formatBRL/haversineDistanceKm) established as the stable contract for Plans 02-04; featured products derived in JS from availability-filtered categories (D-07); scripts/verify-menu.ts is the standing Wave 0 live-DB regression check for MENU-02..07
 
 ### Pending Todos
 
@@ -124,6 +126,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-17T06:28:46.097Z
-Stopped at: Completed 04.1-04-PLAN.md
+Last session: 2026-06-17T16:07:13.658Z
+Stopped at: Completed 05-01-PLAN.md
 Resume file: None

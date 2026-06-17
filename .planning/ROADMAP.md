@@ -115,7 +115,7 @@ Plans:
   6. Customer can add products to a cart with quantities, add per-item notes, and adjust quantities or remove items afterward
 **Plans**: 4 plans
 Plans:
-- [ ] 05-01-PLAN.md — Foundation: install tabs/sheet, menu queries + pt-BR/Haversine format lib, root 404, verify-menu script
+- [x] 05-01-PLAN.md — Foundation: install tabs/sheet, menu queries + pt-BR/Haversine format lib, root 404, verify-menu script
 - [ ] 05-02-PLAN.md — Unit selection route + iFood-style geolocation picker (nearest-first, last-unit memory)
 - [ ] 05-03-PLAN.md — Cart state layer: CartItem type + CartProvider (Context + useReducer + per-unit localStorage)
 - [ ] 05-04-PLAN.md — Menu UI: per-unit layout, Tabs + Destaques + sticky indicator, product Dialog, floating cart Sheet
