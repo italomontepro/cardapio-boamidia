@@ -39,6 +39,8 @@ export const units = pgTable('units', {
   address: text('address'),
   whatsappNumber: text('whatsapp_number'),
   hours: text('hours'),
+  lat: numeric('lat', { precision: 10, scale: 7, mode: 'number' }),
+  lng: numeric('lng', { precision: 10, scale: 7, mode: 'number' }),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
 }, (table) => [
   unique('units_restaurant_slug_unique').on(table.restaurantId, table.slug),

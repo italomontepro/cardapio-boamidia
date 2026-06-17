@@ -22,6 +22,13 @@
       "when": 1781556618781,
       "tag": "0002_rls_policies",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1781676760831,
+      "tag": "0003_units_lat_lng",
+      "breakpoints": true
     }
   ]
 }
