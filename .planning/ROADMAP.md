@@ -138,6 +138,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 04.1 → 5 → 6
 | 2. Platform Super-Admin — Restaurant Provisioning | 4/4 | Complete   | 2026-06-16 |
 | 3. Restaurant Admin — Units, Catalog & Photos | 4/4 | Complete   | 2026-06-16 |
 | 4. Per-Unit Availability Management | 2/2 | Complete   | 2026-06-16 |
-| 04.1. Localização de Unidades via Mapa (INSERTED) | 4/4 | Complete   | 2026-06-17 |
+| 04.1. Localização de Unidades via Mapa (INSERTED) | 4/4 | Complete    | 2026-06-17 |
 | 5. Public Customer Menu — Selection, Browsing & Cart | 0/TBD | Not started | - |
 | 6. WhatsApp Order Generation | 0/TBD | Not started | - |
