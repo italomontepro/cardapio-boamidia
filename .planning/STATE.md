@@ -3,11 +3,11 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 5 context gathered
-last_updated: "2026-06-17T00:39:13.028Z"
+stopped_at: Phase 04.1 context gathered
+last_updated: "2026-06-17T05:43:51.113Z"
 last_activity: 2026-06-16
 progress:
-  total_phases: 6
+  total_phases: 7
   completed_phases: 4
   total_plans: 15
   completed_plans: 15
@@ -66,6 +66,10 @@ Progress: [██████████] 100%
 
 ## Accumulated Context
 
+### Roadmap Evolution
+
+- Phase 04.1 inserted after Phase 4: Localizacao de unidades via mapa - lat/lng e formulario em etapas no admin (URGENT) — Phase 5's "unidade mais próxima" feature depends on units having lat/lng, which Phase 3's original units CRUD did not include.
+
 ### Decisions
 
 Decisions are logged in PROJECT.md Key Decisions table.
@@ -112,6 +116,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-17T00:39:13.019Z
-Stopped at: Phase 5 context gathered
-Resume file: .planning/phases/05-public-customer-menu-selection-browsing-cart/05-CONTEXT.md
+Last session: 2026-06-17T05:43:51.100Z
+Stopped at: Phase 04.1 context gathered
+Resume file: .planning/phases/04.1-localizacao-de-unidades-via-mapa-lat-lng-e-formulario-em-etapas-no-admin/04.1-CONTEXT.md
