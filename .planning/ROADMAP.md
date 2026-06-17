@@ -113,7 +113,12 @@ Plans:
   4. Prices display in pt-BR currency format (R$) and the layout is responsive/mobile-first
   5. Empty states are handled gracefully (no units, category with no available products)
   6. Customer can add products to a cart with quantities, add per-item notes, and adjust quantities or remove items afterward
-**Plans**: TBD
+**Plans**: 4 plans
+Plans:
+- [ ] 05-01-PLAN.md — Foundation: install tabs/sheet, menu queries + pt-BR/Haversine format lib, root 404, verify-menu script
+- [ ] 05-02-PLAN.md — Unit selection route + iFood-style geolocation picker (nearest-first, last-unit memory)
+- [ ] 05-03-PLAN.md — Cart state layer: CartItem type + CartProvider (Context + useReducer + per-unit localStorage)
+- [ ] 05-04-PLAN.md — Menu UI: per-unit layout, Tabs + Destaques + sticky indicator, product Dialog, floating cart Sheet
 **UI hint**: yes
 
 ### Phase 6: WhatsApp Order Generation
@@ -139,5 +144,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 04.1 → 5 → 6
 | 3. Restaurant Admin — Units, Catalog & Photos | 4/4 | Complete   | 2026-06-16 |
 | 4. Per-Unit Availability Management | 2/2 | Complete   | 2026-06-16 |
 | 04.1. Localização de Unidades via Mapa (INSERTED) | 4/4 | Complete    | 2026-06-17 |
-| 5. Public Customer Menu — Selection, Browsing & Cart | 0/TBD | Not started | - |
+| 5. Public Customer Menu — Selection, Browsing & Cart | 0/4 | Not started | - |
 | 6. WhatsApp Order Generation | 0/TBD | Not started | - |
