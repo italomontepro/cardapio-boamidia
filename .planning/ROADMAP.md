@@ -95,10 +95,10 @@ Plans:
   2. A restaurant admin can set a unit's exact location via a 3-step wizard (Básico → Contato/Horário → Localização) with progress indicator and Próximo/Voltar navigation
   3. Step 3 shows an interactive Leaflet/OSM map; entering it auto-geocodes the typed address (Nominatim) and the admin can drag the pin to adjust, or search again manually
   4. Location is optional — a unit can be saved without a pin and is flagged with a discreet "Sem localização" badge in the units table
-**Plans:** 1/4 plans executed
+**Plans:** 2/4 plans executed
 Plans:
 - [x] 04.1-01-PLAN.md — Install leaflet/react-leaflet, add nullable lat/lng to units schema + migration, Wave 0 verify-units-location script
-- [ ] 04.1-02-PLAN.md — Extend upsertUnitSchema with lat/lng, persist in createUnit/updateUnit, server-side Nominatim geocode helper + geocodeUnitAddress Server Action
+- [x] 04.1-02-PLAN.md — Extend upsertUnitSchema with lat/lng, persist in createUnit/updateUnit, server-side Nominatim geocode helper + geocodeUnitAddress Server Action
 - [ ] 04.1-03-PLAN.md — Client-only Leaflet map widget (draggable marker, icon fix, recenter) + next/dynamic ssr:false loader
 - [ ] 04.1-04-PLAN.md — 3-step wizard refactor (progress indicator, step-gated nav), Step 3 map with auto-geocode + manual search, "Sem localização" badge on units table
 
@@ -138,6 +138,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 04.1 → 5 → 6
 | 2. Platform Super-Admin — Restaurant Provisioning | 4/4 | Complete   | 2026-06-16 |
 | 3. Restaurant Admin — Units, Catalog & Photos | 4/4 | Complete   | 2026-06-16 |
 | 4. Per-Unit Availability Management | 2/2 | Complete   | 2026-06-16 |
-| 04.1. Localização de Unidades via Mapa (INSERTED) | 1/4 | In Progress|  |
+| 04.1. Localização de Unidades via Mapa (INSERTED) | 2/4 | In Progress|  |
 | 5. Public Customer Menu — Selection, Browsing & Cart | 0/TBD | Not started | - |
 | 6. WhatsApp Order Generation | 0/TBD | Not started | - |
