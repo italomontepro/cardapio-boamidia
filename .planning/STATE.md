@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 05-03-PLAN.md
-last_updated: "2026-06-17T16:25:24.747Z"
+stopped_at: Completed 05-02-PLAN.md
+last_updated: "2026-06-17T16:26:09.725Z"
 last_activity: 2026-06-17
 progress:
   total_phases: 7
   completed_phases: 5
   total_plans: 23
-  completed_plans: 21
+  completed_plans: 22
   percent: 100
 ---
 
@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-06-15)
 ## Current Position
 
 Phase: 05 (public-customer-menu-selection-browsing-cart) — EXECUTING
-Plan: 3 of 4
+Plan: 4 of 4
 Status: Ready to execute
 Last activity: 2026-06-17
 
@@ -69,6 +69,7 @@ Progress: [██████████] 100%
 | Phase 04.1 P04 | 9min | 3 tasks | 3 files |
 | Phase 05 P01 | 18min | 4 tasks | 7 files |
 | Phase 05-public-customer-menu-selection-browsing-cart P03 | 6min | 2 tasks | 2 files |
+| Phase 05 P02 | 12min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -110,6 +111,7 @@ Recent decisions affecting current work:
 - [Phase 04.1-localizacao-de-unidades-via-mapa-lat-lng-e-formulario-em-etapas-no-admin]: P04: unit-form-dialog.tsx rewritten as a 3-step wizard (Básico/Contato-Horário/Localização) inside one useForm+zodResolver instance, gated via form.trigger(STEP_FIELDS); Step 3 embeds UnitLocationMap with auto-geocode-once-on-entry (useRef guard) + manual Buscar search + draggable pin, Brazil-center fallback when no coords; unit-table.tsx shows a discreet 'Sem localização' outline badge when lat/lng is null — Phase 04.1 feature-complete
 - [Phase 05-public-customer-menu-selection-browsing-cart]: P01: src/lib/menu/queries.ts (getRestaurantBySlug/getUnitsForRestaurant/getUnitBySlug/getMenuForUnit) and format.ts (formatBRL/haversineDistanceKm) established as the stable contract for Plans 02-04; featured products derived in JS from availability-filtered categories (D-07); scripts/verify-menu.ts is the standing Wave 0 live-DB regression check for MENU-02..07
 - [Phase 05-public-customer-menu-selection-browsing-cart]: P03: cart-types.ts (CartItem) and cart-provider.tsx (CartProvider/useCart, Context+useReducer) implemented exactly per RESEARCH.md Pattern 3; mount-gated localStorage hydrate/persist keyed by cart:<restaurantId>:<unitId> (D-10) ensures per-unit isolation and no SSR hydration mismatch; ADD merges by productId (sums qty), SET_QTY with qty<=0 removes the line
+- [Phase 05-public-customer-menu-selection-browsing-cart]: P02: src/app/r/[restaurantSlug]/page.tsx (Server Component, 404/empty/redirect/picker branch) and unit-picker.tsx (Client Component, geolocation nearest-first via haversineDistanceKm, boamidia:lastUnit:<restaurantSlug> localStorage convention) implement MENU-01/MENU-06/MENU-07 and D-01/D-02/D-03/D-04/D-12
 
 ### Pending Todos
 
@@ -128,6 +130,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-17T16:25:24.742Z
-Stopped at: Completed 05-03-PLAN.md
+Last session: 2026-06-17T16:26:09.720Z
+Stopped at: Completed 05-02-PLAN.md
 Resume file: None

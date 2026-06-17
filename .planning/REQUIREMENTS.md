@@ -31,7 +31,7 @@ Requirements for initial release. Each maps to roadmap phases.
 | CTLG-05 | Phase 3 | Complete |
 | CTLG-06 | Phase 3 | Pending |
 | CTLG-07 | Phase 4 | Complete |
-| MENU-01 | Phase 5 | Pending |
+| MENU-01 | Phase 5 | Complete |
 | MENU-02 | Phase 5 | Complete |
 | MENU-03 | Phase 5 | Complete |
 | MENU-04 | Phase 5 | Complete |
