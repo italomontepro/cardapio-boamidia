@@ -15,6 +15,8 @@ export const upsertUnitSchema = z.object({
       'Número de WhatsApp inválido. Use o formato (11) 99999-9999 ou +5511999999999.'
     )
     .transform((val) => parsePhoneNumber(val, 'BR').number),
+  lat: z.number().min(-90, 'Latitude inválida.').max(90, 'Latitude inválida.').optional().nullable(),
+  lng: z.number().min(-180, 'Longitude inválida.').max(180, 'Longitude inválida.').optional().nullable(),
 })
 
 export type UpsertUnitInput = z.infer<typeof upsertUnitSchema>
