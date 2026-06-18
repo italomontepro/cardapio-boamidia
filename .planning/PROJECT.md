@@ -15,12 +15,12 @@ Um cliente final consegue acessar o link de um restaurante, escolher a unidade, 
 - [x] Admin geral faz login em painel próprio — Validated in Phase 1: Foundation — Data Model, RLS & Auth Roles (AUTH-01)
 - [x] Admin do restaurante faz login em painel próprio, restrito ao seu restaurante — Validated in Phase 1: Foundation — Data Model, RLS & Auth Roles (AUTH-02, AUTH-03 — isolamento entre tenants confirmado via RLS)
 - [x] Admin do restaurante define a localização geográfica exata de cada unidade (lat/lng) via mapa interativo, num formulário de cadastro/edição em etapas — Validated in Phase 04.1: Localização de unidades via mapa (inserida — pré-requisito da Fase 5, que precisa de lat/lng para sugerir a unidade mais próxima ao cliente)
+- [x] Cliente acessa link único do restaurante e vê uma página de seleção de unidade — Validated in Phase 5: Public Customer Menu — Selection, Browsing & Cart (MENU-01, MENU-06, MENU-07)
+- [x] Cliente visualiza o cardápio da unidade escolhida (categorias e produtos com nome, descrição, foto, preço), mostrando apenas itens disponíveis naquela unidade — Validated in Phase 5 (MENU-02, MENU-03, MENU-04, MENU-05)
+- [x] Cliente monta um pedido (carrinho) com itens, quantidades e observações — Validated in Phase 5 (CART-01, CART-02, CART-03)
 
 ### Active
 
-- [ ] Cliente acessa link único do restaurante e vê uma página de seleção de unidade
-- [ ] Cliente visualiza o cardápio da unidade escolhida (categorias e produtos com nome, descrição, foto, preço), mostrando apenas itens disponíveis naquela unidade
-- [ ] Cliente monta um pedido (carrinho) com itens, quantidades e observações
 - [ ] Cliente finaliza o pedido e o sistema gera uma mensagem formatada enviada via WhatsApp (wa.me) para o número da unidade escolhida
 - [ ] Admin geral faz CRUD de restaurantes (criar, editar, remover, ativar/desativar)
 - [ ] Admin do restaurante faz CRUD de categorias e produtos (nome, descrição, preço)
@@ -76,4 +76,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-17 after Phase 04.1 completion*
+*Last updated: 2026-06-18 after Phase 5 completion*
