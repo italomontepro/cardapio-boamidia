@@ -43,7 +43,7 @@ Requirements for initial release. Each maps to roadmap phases.
 | CART-03 | Phase 5 | Complete |
 | CART-04 | Phase 6 | Complete |
 | CART-05 | Phase 6 | Complete |
-| CART-06 | Phase 6 | Pending |
+| CART-06 | Phase 6 | Complete |
 
 **Coverage:**
 - v1 requirements: 31 total

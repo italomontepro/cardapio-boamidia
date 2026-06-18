@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: "06-02-PLAN.md paused at Task 3 checkpoint (human-verify, real-device WhatsApp testing)"
-last_updated: "2026-06-18T06:21:25Z"
+status: verifying
+stopped_at: Completed 06-02-PLAN.md Tasks 1-2 (code-complete); Task 3 (real-device verification) explicitly deferred per user decision — see 06-HUMAN-UAT.md. Phase 6 code-complete, real-device UAT pending.
+last_updated: "2026-06-18T06:28:17.732Z"
 last_activity: 2026-06-18
 progress:
   total_phases: 7
-  completed_phases: 5
+  completed_phases: 7
   total_plans: 25
-  completed_plans: 23
+  completed_plans: 25
   percent: 100
 ---
 
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-06-15)
 
 **Core value:** Um cliente final consegue acessar o link de um restaurante, escolher a unidade, montar um pedido pelo cardápio e enviá-lo via WhatsApp direto para aquela unidade.
-**Current focus:** Phase 05 — public-customer-menu-selection-browsing-cart
+**Current focus:** Phase 06 — whatsapp-order-generation
 
 ## Current Position
 
 Phase: 6
 Plan: 2 of 2
-Status: Paused at checkpoint (Task 3 of 3 — real-device manual verification)
+Status: Code-complete — phase-level verification will hit a human_needed gate (real-device UAT pending, see 06-HUMAN-UAT.md)
 Last activity: 2026-06-18
 
 Progress: [██████████] 100%
@@ -72,6 +72,7 @@ Progress: [██████████] 100%
 | Phase 05 P02 | 12min | 2 tasks | 2 files |
 | Phase 05 P04 | 25min | 3 tasks | 5 files |
 | Phase 06 P01 | 15min | 3 tasks | 7 files |
+| Phase 06 P02 | 6min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -116,6 +117,7 @@ Recent decisions affecting current work:
 - [Phase 05-public-customer-menu-selection-browsing-cart]: P02: src/app/r/[restaurantSlug]/page.tsx (Server Component, 404/empty/redirect/picker branch) and unit-picker.tsx (Client Component, geolocation nearest-first via haversineDistanceKm, boamidia:lastUnit:<restaurantSlug> localStorage convention) implement MENU-01/MENU-06/MENU-07 and D-01/D-02/D-03/D-04/D-12
 - [Phase 05]: P04: menu-view.tsx (sticky unit header, Destaques strip outside Tabs, Base UI category Tabs) + product-dialog.tsx (qty stepper min 1, notes, Number(price)-converted ADD dispatch, key={product.id} remount instead of reset-effect) + cart-fab.tsx/cart-sheet.tsx (floating count button hidden when empty, bottom Sheet with inline SET_QTY/REMOVE and live subtotal) complete MENU-02..05/CART-01/02; Phase 5 feature-complete
 - [Phase 06-whatsapp-order-generation]: P01: src/lib/menu/whatsapp.ts (buildOrderMessage/buildWhatsAppUrl pure functions + DeliveryType) and scripts/verify-whatsapp.ts (DB-free, 13 assertions) establish the stable contract for Plan 02's CartSheet footer wiring; address omitted from message body, encodeURIComponent used for encoding, CLEAR cart action added, sonner Toaster mounted without ThemeProvider
+- [Phase 06]: 06-02: Task 3 (real-device WhatsApp verification) explicitly deferred per user decision — no seeded units in live DB blocks test URL construction; tracked as pending in 06-HUMAN-UAT.md, not marked passed
 
 ### Pending Todos
 
@@ -131,9 +133,10 @@ None yet.
 - [Phase 1 planning]: Confirm `admin_users` single-table-with-role design (role + restaurant_id, server-side only, never client-writable).
 - [Phase 1 planning]: Confirm ORM choice (Drizzle vs. raw supabase-js) for the schema/migrations.
 - [Phase 3 planning]: Confirm whether "fotos" implies multi-photo galleries per product or a single `image_url` is sufficient for v1 (research recommends single column, additive `product_images` table later if needed).
+- Phase 6 real-device WhatsApp verification (success criterion #4) is pending — no seeded units with whatsappNumber in live DB; see .planning/phases/06-whatsapp-order-generation/06-HUMAN-UAT.md
 
 ## Session Continuity
 
-Last session: 2026-06-18T06:21:25Z
-Stopped at: 06-02-PLAN.md Task 1 + Task 2 complete (commits 7a61a26, c53642b); Task 3 is a blocking checkpoint:human-verify requiring real iOS Safari + Android Chrome device testing of the WhatsApp send flow. No SUMMARY.md yet — plan is incomplete pending checkpoint approval.
-Resume file: .planning/phases/06-whatsapp-order-generation/06-02-PLAN.md (Task 3)
+Last session: 2026-06-18T06:28:17.726Z
+Stopped at: Completed 06-02-PLAN.md Tasks 1-2 (code-complete); Task 3 (real-device verification) explicitly deferred per user decision — see 06-HUMAN-UAT.md. Phase 6 code-complete, real-device UAT pending.
+Resume file: None

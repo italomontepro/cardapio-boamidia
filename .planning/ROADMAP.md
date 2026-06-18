@@ -17,8 +17,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Restaurant Admin — Units, Catalog & Photos** - Restaurant admin can log in and build out their units, categories, products, and product photos (completed 2026-06-16)
 - [x] **Phase 4: Per-Unit Availability Management** - Restaurant admin can control which products are available at which units (completed 2026-06-16)
 - [x] **Phase 04.1: Localização de Unidades via Mapa (INSERTED)** - Restaurant admin can pin each unit's exact lat/lng through a 3-step wizard with an interactive map, supplying the data Phase 5's "nearest unit" feature depends on (completed 2026-06-17)
-- [ ] **Phase 5: Public Customer Menu — Selection, Browsing & Cart** - Customers can open a restaurant's link, pick a unit, browse the availability-filtered menu, and build a cart
-- [ ] **Phase 6: WhatsApp Order Generation** - Customers can send a complete, well-formatted order from their cart directly to the chosen unit's WhatsApp
+- [x] **Phase 5: Public Customer Menu — Selection, Browsing & Cart** - Customers can open a restaurant's link, pick a unit, browse the availability-filtered menu, and build a cart (completed 2026-06-18)
+- [x] **Phase 6: WhatsApp Order Generation** - Customers can send a complete, well-formatted order from their cart directly to the chosen unit's WhatsApp (code-complete 2026-06-18; real-device UAT pending — see 06-HUMAN-UAT.md)
 
 ## Phase Details
 
@@ -133,7 +133,7 @@ Plans:
 **Plans**: 2 plans
 Plans:
 - [x] 06-01-PLAN.md — Wave 0: pure whatsapp.ts helper (buildOrderMessage/buildWhatsAppUrl) + DB-free verify-whatsapp script + CLEAR reducer action + sonner Toaster mount
-- [ ] 06-02-PLAN.md — Extend CartSheet footer (name, pickup/delivery, send via wa.me, clear-cart) + thread unit/restaurant props through CartFab + real-device verification
+- [x] 06-02-PLAN.md — Extend CartSheet footer (name, pickup/delivery, send via wa.me, clear-cart) + thread unit/restaurant props through CartFab + real-device verification
 
 ## Progress
 
@@ -147,5 +147,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 04.1 → 5 → 6
 | 3. Restaurant Admin — Units, Catalog & Photos | 4/4 | Complete   | 2026-06-16 |
 | 4. Per-Unit Availability Management | 2/2 | Complete   | 2026-06-16 |
 | 04.1. Localização de Unidades via Mapa (INSERTED) | 4/4 | Complete    | 2026-06-17 |
-| 5. Public Customer Menu — Selection, Browsing & Cart | 0/4 | Not started | - |
-| 6. WhatsApp Order Generation | 0/TBD | Not started | - |
+| 5. Public Customer Menu — Selection, Browsing & Cart | 4/4 | Complete   | 2026-06-18 |
+| 6. WhatsApp Order Generation | 2/2 | Code-complete (real-device UAT pending — see 06-HUMAN-UAT.md) | 2026-06-18 |
