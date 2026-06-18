@@ -51,7 +51,7 @@ Declared values (must be multiples of 4) — identical to Phase 5, no phase-spec
 
 Exceptions:
 - Icon-only buttons (`icon-sm` stepper +/− in `CartSheet`) use the existing `size-7` (28px) shadcn token — below the 44px touch-target guideline, but this is the **established Phase 5 pattern**, not a new exception. Do not change it in this phase (out of scope — would require revisiting Phase 5 UI).
-- The new footer block (name input, delivery-type tabs, send button, clear-cart button) stacks with `gap-3` (12px) between fields — not a strict 8pt multiple, but matches the existing `flex flex-col gap-3` pattern already used for the cart item list in `cart-sheet.tsx`. Kept for visual consistency with the rest of the Sheet rather than introducing a second internal spacing rhythm.
+- The new footer block (name input, delivery-type tabs, send button, clear-cart button) stacks with `gap-3` (12px) between fields. This is 12px — a multiple of 4, but not in the standard 8pt scale {4, 8, 16, 24, 32, 48, 64}. This is an **inherited Phase 5 exception, out of scope to change in Phase 6**: the exact same `flex flex-col gap-3` pattern is already live in `cart-sheet.tsx` (cart item list) and `menu-view.tsx`, predating this phase. Phase 6 reuses it for visual consistency with the rest of the Sheet rather than introducing a second, divergent internal spacing rhythm. Revisiting this value would mean reworking Phase 5 UI, which is not in scope here.
 
 ---
 
@@ -66,7 +66,7 @@ Identical to Phase 5 (no new sizes/weights introduced):
 | Subtotal / price emphasis | 16px (`text-base`) | 600 (`font-semibold`) | 1.5 |
 | Sheet title (heading) | 18px (`text-lg`, shadcn `SheetTitle` default) | 600 (`font-semibold`) | 1.2 |
 
-Only 2 weights in use across the whole Sheet: 400 (regular body/placeholder) and 500/600 collapsed to "medium-or-semibold for emphasis" — treat 500 and 600 as the single "emphasis" weight tier per the existing codebase convention (already mixed in `cart-sheet.tsx`: `font-medium` for item names, `font-semibold` for prices/subtotal). Do not introduce a third weight.
+Weight exception: the table above lists three weight values (400, 500, 600) — beyond the 2-weight max for a new contract. This is an **inherited Phase 5 exception, out of scope to change in Phase 6**: both 500 (`font-medium`) and 600 (`font-semibold`) are already live, pre-existing conventions in `cart-sheet.tsx` and `menu-view.tsx` (item names use `font-medium`, prices/subtotal/headings use `font-semibold`), predating this phase. Phase 6 introduces no new weight — it only reuses these two existing emphasis weights on the new footer block (e.g. field labels, subtotal). Treat 500/600 as a single "emphasis" tier inherited from Phase 5; revisiting this to collapse it to one weight would mean reworking Phase 5 UI, which is not in scope here.
 
 ---
 
