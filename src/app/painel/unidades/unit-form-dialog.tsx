@@ -112,8 +112,8 @@ export function UnitFormDialog({ mode, unit }: UnitFormDialogProps) {
 
   const lat = watch('lat')
   const lng = watch('lng')
-  const mapLat = lat ?? BR_CENTER.lat
-  const mapLng = lng ?? BR_CENTER.lng
+  const mapLat = lat != null && !Number.isNaN(lat) ? lat : BR_CENTER.lat
+  const mapLng = lng != null && !Number.isNaN(lng) ? lng : BR_CENTER.lng
 
   async function runGeocode(query: string) {
     const q = query.trim()
@@ -199,8 +199,15 @@ export function UnitFormDialog({ mode, unit }: UnitFormDialogProps) {
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           {!isCreate && <input type="hidden" {...register('id')} />}
-          <input type="hidden" {...register('lat', { valueAsNumber: true })} />
-          <input type="hidden" {...register('lng', { valueAsNumber: true })} />
+          {/* type="number" (not "hidden") -- only "number"/"date"/"range" inputs support the
+              native valueAsNumber DOM property that { valueAsNumber: true } relies on; a
+              type="hidden" input always reports valueAsNumber as NaN, corrupting lat/lng on
+              every re-validation (e.g. clicking "Próximo"). step="any" disables the implicit
+              step="1" native constraint -- otherwise decimal coordinates (e.g. -23.5578909)
+              trigger a silent stepMismatch that blocks submit (the hidden field can't be
+              focused to show the native error). */}
+          <input type="number" step="any" style={{ display: 'none' }} {...register('lat', { valueAsNumber: true })} />
+          <input type="number" step="any" style={{ display: 'none' }} {...register('lng', { valueAsNumber: true })} />
 
           {formError && (
             <p className="rounded bg-destructive/10 px-3 py-2 text-sm text-destructive">
