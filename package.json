@@ -12,7 +12,8 @@
     "verify-catalog": "tsx scripts/verify-catalog.ts",
     "verify-availability": "tsx scripts/verify-availability.ts",
     "verify-units-location": "tsx scripts/verify-units-location.ts",
-    "verify-menu": "tsx scripts/verify-menu.ts"
+    "verify-menu": "tsx scripts/verify-menu.ts",
+    "verify-whatsapp": "tsx scripts/verify-whatsapp.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
