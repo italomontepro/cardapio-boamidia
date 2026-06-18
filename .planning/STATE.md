@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 05-02-PLAN.md
-last_updated: "2026-06-17T16:26:09.725Z"
-last_activity: 2026-06-17
+status: verifying
+stopped_at: Completed 05-04-PLAN.md
+last_updated: "2026-06-18T02:09:51.847Z"
+last_activity: 2026-06-18
 progress:
   total_phases: 7
   completed_phases: 5
@@ -27,8 +27,8 @@ See: .planning/PROJECT.md (updated 2026-06-15)
 
 Phase: 05 (public-customer-menu-selection-browsing-cart) — EXECUTING
 Plan: 4 of 4
-Status: Ready to execute
-Last activity: 2026-06-17
+Status: Phase complete — ready for verification
+Last activity: 2026-06-18
 
 Progress: [██████████] 100%
 
@@ -70,6 +70,7 @@ Progress: [██████████] 100%
 | Phase 05 P01 | 18min | 4 tasks | 7 files |
 | Phase 05-public-customer-menu-selection-browsing-cart P03 | 6min | 2 tasks | 2 files |
 | Phase 05 P02 | 12min | 2 tasks | 2 files |
+| Phase 05 P04 | 25min | 3 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -112,6 +113,7 @@ Recent decisions affecting current work:
 - [Phase 05-public-customer-menu-selection-browsing-cart]: P01: src/lib/menu/queries.ts (getRestaurantBySlug/getUnitsForRestaurant/getUnitBySlug/getMenuForUnit) and format.ts (formatBRL/haversineDistanceKm) established as the stable contract for Plans 02-04; featured products derived in JS from availability-filtered categories (D-07); scripts/verify-menu.ts is the standing Wave 0 live-DB regression check for MENU-02..07
 - [Phase 05-public-customer-menu-selection-browsing-cart]: P03: cart-types.ts (CartItem) and cart-provider.tsx (CartProvider/useCart, Context+useReducer) implemented exactly per RESEARCH.md Pattern 3; mount-gated localStorage hydrate/persist keyed by cart:<restaurantId>:<unitId> (D-10) ensures per-unit isolation and no SSR hydration mismatch; ADD merges by productId (sums qty), SET_QTY with qty<=0 removes the line
 - [Phase 05-public-customer-menu-selection-browsing-cart]: P02: src/app/r/[restaurantSlug]/page.tsx (Server Component, 404/empty/redirect/picker branch) and unit-picker.tsx (Client Component, geolocation nearest-first via haversineDistanceKm, boamidia:lastUnit:<restaurantSlug> localStorage convention) implement MENU-01/MENU-06/MENU-07 and D-01/D-02/D-03/D-04/D-12
+- [Phase 05]: P04: menu-view.tsx (sticky unit header, Destaques strip outside Tabs, Base UI category Tabs) + product-dialog.tsx (qty stepper min 1, notes, Number(price)-converted ADD dispatch, key={product.id} remount instead of reset-effect) + cart-fab.tsx/cart-sheet.tsx (floating count button hidden when empty, bottom Sheet with inline SET_QTY/REMOVE and live subtotal) complete MENU-02..05/CART-01/02; Phase 5 feature-complete
 
 ### Pending Todos
 
@@ -130,6 +132,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-17T16:26:09.720Z
-Stopped at: Completed 05-02-PLAN.md
+Last session: 2026-06-18T02:09:51.844Z
+Stopped at: Completed 05-04-PLAN.md
 Resume file: None

@@ -118,7 +118,7 @@ Plans:
 - [x] 05-01-PLAN.md — Foundation: install tabs/sheet, menu queries + pt-BR/Haversine format lib, root 404, verify-menu script
 - [x] 05-02-PLAN.md — Unit selection route + iFood-style geolocation picker (nearest-first, last-unit memory)
 - [x] 05-03-PLAN.md — Cart state layer: CartItem type + CartProvider (Context + useReducer + per-unit localStorage)
-- [ ] 05-04-PLAN.md — Menu UI: per-unit layout, Tabs + Destaques + sticky indicator, product Dialog, floating cart Sheet
+- [x] 05-04-PLAN.md — Menu UI: per-unit layout, Tabs + Destaques + sticky indicator, product Dialog, floating cart Sheet
 **UI hint**: yes
 
 ### Phase 6: WhatsApp Order Generation
