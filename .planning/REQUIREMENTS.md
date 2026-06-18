@@ -41,8 +41,8 @@ Requirements for initial release. Each maps to roadmap phases.
 | CART-01 | Phase 5 | Complete |
 | CART-02 | Phase 5 | Complete |
 | CART-03 | Phase 5 | Complete |
-| CART-04 | Phase 6 | Pending |
-| CART-05 | Phase 6 | Pending |
+| CART-04 | Phase 6 | Complete |
+| CART-05 | Phase 6 | Complete |
 | CART-06 | Phase 6 | Pending |
 
 **Coverage:**

@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: verifying
-stopped_at: Phase 6 UI-SPEC approved
-last_updated: "2026-06-18T05:44:24.145Z"
+status: executing
+stopped_at: Completed 06-01-PLAN.md
+last_updated: "2026-06-18T06:15:01.417Z"
 last_activity: 2026-06-18
 progress:
   total_phases: 7
-  completed_phases: 6
-  total_plans: 23
+  completed_phases: 5
+  total_plans: 25
   completed_plans: 23
   percent: 100
 ---
@@ -26,8 +26,8 @@ See: .planning/PROJECT.md (updated 2026-06-15)
 ## Current Position
 
 Phase: 6
-Plan: Not started
-Status: Phase complete — ready for verification
+Plan: 2 of 2
+Status: Ready to execute
 Last activity: 2026-06-18
 
 Progress: [██████████] 100%
@@ -71,6 +71,7 @@ Progress: [██████████] 100%
 | Phase 05-public-customer-menu-selection-browsing-cart P03 | 6min | 2 tasks | 2 files |
 | Phase 05 P02 | 12min | 2 tasks | 2 files |
 | Phase 05 P04 | 25min | 3 tasks | 5 files |
+| Phase 06 P01 | 15min | 3 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -114,6 +115,7 @@ Recent decisions affecting current work:
 - [Phase 05-public-customer-menu-selection-browsing-cart]: P03: cart-types.ts (CartItem) and cart-provider.tsx (CartProvider/useCart, Context+useReducer) implemented exactly per RESEARCH.md Pattern 3; mount-gated localStorage hydrate/persist keyed by cart:<restaurantId>:<unitId> (D-10) ensures per-unit isolation and no SSR hydration mismatch; ADD merges by productId (sums qty), SET_QTY with qty<=0 removes the line
 - [Phase 05-public-customer-menu-selection-browsing-cart]: P02: src/app/r/[restaurantSlug]/page.tsx (Server Component, 404/empty/redirect/picker branch) and unit-picker.tsx (Client Component, geolocation nearest-first via haversineDistanceKm, boamidia:lastUnit:<restaurantSlug> localStorage convention) implement MENU-01/MENU-06/MENU-07 and D-01/D-02/D-03/D-04/D-12
 - [Phase 05]: P04: menu-view.tsx (sticky unit header, Destaques strip outside Tabs, Base UI category Tabs) + product-dialog.tsx (qty stepper min 1, notes, Number(price)-converted ADD dispatch, key={product.id} remount instead of reset-effect) + cart-fab.tsx/cart-sheet.tsx (floating count button hidden when empty, bottom Sheet with inline SET_QTY/REMOVE and live subtotal) complete MENU-02..05/CART-01/02; Phase 5 feature-complete
+- [Phase 06-whatsapp-order-generation]: P01: src/lib/menu/whatsapp.ts (buildOrderMessage/buildWhatsAppUrl pure functions + DeliveryType) and scripts/verify-whatsapp.ts (DB-free, 13 assertions) establish the stable contract for Plan 02's CartSheet footer wiring; address omitted from message body, encodeURIComponent used for encoding, CLEAR cart action added, sonner Toaster mounted without ThemeProvider
 
 ### Pending Todos
 
@@ -132,6 +134,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-18T05:44:24.134Z
-Stopped at: Phase 6 UI-SPEC approved
-Resume file: .planning/phases/06-whatsapp-order-generation/06-UI-SPEC.md
+Last session: 2026-06-18T06:15:01.413Z
+Stopped at: Completed 06-01-PLAN.md
+Resume file: None

@@ -132,7 +132,7 @@ Plans:
   4. Order messages with accents, emojis, and large carts (10+ items) render and send correctly on real mobile devices
 **Plans**: 2 plans
 Plans:
-- [ ] 06-01-PLAN.md — Wave 0: pure whatsapp.ts helper (buildOrderMessage/buildWhatsAppUrl) + DB-free verify-whatsapp script + CLEAR reducer action + sonner Toaster mount
+- [x] 06-01-PLAN.md — Wave 0: pure whatsapp.ts helper (buildOrderMessage/buildWhatsAppUrl) + DB-free verify-whatsapp script + CLEAR reducer action + sonner Toaster mount
 - [ ] 06-02-PLAN.md — Extend CartSheet footer (name, pickup/delivery, send via wa.me, clear-cart) + thread unit/restaurant props through CartFab + real-device verification
 
 ## Progress
