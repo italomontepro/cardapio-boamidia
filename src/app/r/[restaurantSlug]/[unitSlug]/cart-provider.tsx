@@ -8,6 +8,7 @@ type CartAction =
   | { type: 'SET_QTY'; productId: string; qty: number }
   | { type: 'REMOVE'; productId: string }
   | { type: 'HYDRATE'; items: CartItem[] }
+  | { type: 'CLEAR' }
 
 function reducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
@@ -36,6 +37,8 @@ function reducer(state: CartState, action: CartAction): CartState {
       }
     case 'REMOVE':
       return { items: state.items.filter((i) => i.productId !== action.productId) }
+    case 'CLEAR':
+      return { items: [] }
   }
 }
 
