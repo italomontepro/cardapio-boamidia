@@ -20,7 +20,11 @@ export default async function MenuPage({
   return (
     <>
       <MenuView unitName={unit.name} categories={categories} featured={featured} />
-      <CartFab />
+      <CartFab
+        unitName={unit.name}
+        restaurantName={restaurant.name}
+        whatsappNumber={unit.whatsappNumber}
+      />
     </>
   )
 }
