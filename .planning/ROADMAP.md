@@ -130,7 +130,10 @@ Plans:
   2. Customer can tap "send order" and it opens WhatsApp (wa.me) pre-filled with a correctly formatted, properly encoded message addressed to the selected unit's number
   3. An empty cart shows an appropriate state and cannot be sent
   4. Order messages with accents, emojis, and large carts (10+ items) render and send correctly on real mobile devices
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 06-01-PLAN.md — Wave 0: pure whatsapp.ts helper (buildOrderMessage/buildWhatsAppUrl) + DB-free verify-whatsapp script + CLEAR reducer action + sonner Toaster mount
+- [ ] 06-02-PLAN.md — Extend CartSheet footer (name, pickup/delivery, send via wa.me, clear-cart) + thread unit/restaurant props through CartFab + real-device verification
 
 ## Progress
 
