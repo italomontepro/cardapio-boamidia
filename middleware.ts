@@ -1,9 +1,12 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
-export const runtime = 'nodejs'
-
 export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
+  const isLoginRoute = pathname === '/admin/login'
+
+  if (isLoginRoute) return NextResponse.next()
+
   let supabaseResponse = NextResponse.next({ request })
 
   const supabase = createServerClient(
@@ -27,11 +30,7 @@ export async function middleware(request: NextRequest) {
 
   const { data: { user } } = await supabase.auth.getUser()
 
-  const isAdminRoute = request.nextUrl.pathname.startsWith('/admin')
-  const isPainelRoute = request.nextUrl.pathname.startsWith('/painel')
-  const isLoginRoute = request.nextUrl.pathname === '/admin/login'
-
-  if (!user && (isAdminRoute || isPainelRoute) && !isLoginRoute) {
+  if (!user) {
     const url = request.nextUrl.clone()
     url.pathname = '/admin/login'
     return NextResponse.redirect(url)
@@ -41,7 +40,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
-  ],
+  matcher: ['/admin/:path*', '/painel/:path*'],
 }
