@@ -3,7 +3,7 @@
 import { useState, useTransition, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { upsertProduct } from '@/lib/catalog/actions'
+import { upsertProduct, removeProductPhoto } from '@/lib/catalog/actions'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -45,6 +45,7 @@ export function ProductFormDialog(props: ProductFormDialogProps) {
   const [open, setOpen] = useState(false)
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
+  const [isRemoving, startRemoveTransition] = useTransition()
   const formRef = useRef<HTMLFormElement>(null)
 
   const isEdit = props.mode === 'edit'
@@ -70,6 +71,22 @@ export function ProductFormDialog(props: ProductFormDialogProps) {
     if (file) {
       const objectUrl = URL.createObjectURL(file)
       setPreviewUrl(objectUrl)
+    }
+  }
+
+  function handleRemovePhoto() {
+    if (previewUrl?.startsWith('blob:')) {
+      setPreviewUrl(null)
+      const input = formRef.current?.querySelector<HTMLInputElement>('input[name="photo"]')
+      if (input) input.value = ''
+      return
+    }
+
+    if (isEdit && product?.id) {
+      startRemoveTransition(async () => {
+        await removeProductPhoto(product.id)
+        setPreviewUrl(null)
+      })
     }
   }
 
@@ -189,14 +206,26 @@ export function ProductFormDialog(props: ProductFormDialogProps) {
             <div className="space-y-2">
               <Label htmlFor="product-photo">Foto do produto</Label>
               {previewUrl && (
-                <div className="relative h-20 w-28 overflow-hidden rounded border">
-                  <Image
-                    src={previewUrl}
-                    alt="Pré-visualização"
-                    fill
-                    className="object-cover"
-                    unoptimized={previewUrl.startsWith('blob:')}
-                  />
+                <div className="flex items-end gap-3">
+                  <div className="relative h-20 w-28 overflow-hidden rounded border">
+                    <Image
+                      src={previewUrl}
+                      alt="Pré-visualização"
+                      fill
+                      className="object-cover"
+                      unoptimized={previewUrl.startsWith('blob:')}
+                    />
+                  </div>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="text-destructive hover:text-destructive hover:bg-destructive/10"
+                    onClick={handleRemovePhoto}
+                    disabled={isRemoving}
+                  >
+                    {isRemoving ? 'Removendo...' : 'Remover foto'}
+                  </Button>
                 </div>
               )}
               <input

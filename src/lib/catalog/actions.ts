@@ -222,6 +222,36 @@ export async function upsertProduct(formData: FormData) {
   }
 }
 
+export async function removeProductPhoto(productId: string) {
+  const admin = await getCurrentAdmin()
+  if (!admin?.restaurantId) return { error: 'Não autorizado.' }
+
+  const [product] = await db
+    .select({ id: products.id, imageUrl: products.imageUrl })
+    .from(products)
+    .where(and(eq(products.id, productId), eq(products.restaurantId, admin.restaurantId)))
+
+  if (!product) return { error: 'Produto não encontrado.' }
+
+  if (product.imageUrl) {
+    try {
+      const urlObj = new URL(product.imageUrl)
+      const marker = '/product-images/'
+      const idx = urlObj.pathname.indexOf(marker)
+      if (idx !== -1) {
+        const storagePath = urlObj.pathname.slice(idx + marker.length)
+        const supabaseAdmin = createAdminClient()
+        await supabaseAdmin.storage.from('product-images').remove([storagePath])
+      }
+    } catch {}
+  }
+
+  await db.update(products).set({ imageUrl: null }).where(eq(products.id, productId))
+
+  revalidateCardapio()
+  return { success: true }
+}
+
 export async function deleteProduct(id: string) {
   const admin = await getCurrentAdmin()
   if (!admin?.restaurantId) return { error: { _form: ['Não autorizado.'] } }
