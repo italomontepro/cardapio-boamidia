@@ -135,8 +135,14 @@ None yet.
 - [Phase 3 planning]: Confirm whether "fotos" implies multi-photo galleries per product or a single `image_url` is sufficient for v1 (research recommends single column, additive `product_images` table later if needed).
 - Phase 6 real-device WhatsApp verification (success criterion #4) is pending — no seeded units with whatsappNumber in live DB; see .planning/phases/06-whatsapp-order-generation/06-HUMAN-UAT.md
 
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260630-odg | Criar página link na bio estilo Linktree em /r/restaurantSlug/link | 2026-06-30 | 17195d5 | [260630-odg-criar-p-gina-link-na-bio-estilo-linktree](./quick/260630-odg-criar-p-gina-link-na-bio-estilo-linktree/) |
+
 ## Session Continuity
 
-Last session: 2026-06-18T06:28:17.726Z
+Last session: 2026-06-30 - Completed quick task 260630-odg: Criar página link na bio estilo Linktree
 Stopped at: Completed 06-02-PLAN.md Tasks 1-2 (code-complete); Task 3 (real-device verification) explicitly deferred per user decision — see 06-HUMAN-UAT.md. Phase 6 code-complete, real-device UAT pending.
 Resume file: None
