@@ -56,7 +56,7 @@ export default function CartSheet({
   const [deliveryType, setDeliveryType] = useState<DeliveryType>(null)
   const [neighborhood, setNeighborhood] = useState('')
   const [addressNumber, setAddressNumber] = useState('')
-  const [location, setLocation] = useState('')
+
   const [paymentMethod, setPaymentMethod] = useState('')
 
   const subtotal = state.items.reduce((sum, item) => sum + item.price * item.qty, 0)
@@ -69,7 +69,7 @@ export default function CartSheet({
       deliveryType,
       neighborhood,
       addressNumber,
-      location,
+      location: '',
       paymentMethod,
       items: state.items,
     })
@@ -204,15 +204,6 @@ export default function CartSheet({
                           />
                         </div>
 
-                        <div className="flex flex-col gap-2">
-                          <Label htmlFor="location">Sua localização</Label>
-                          <Input
-                            id="location"
-                            value={location}
-                            onChange={(e) => setLocation(e.target.value)}
-                            placeholder="Link do Maps ou endereço completo"
-                          />
-                        </div>
                       </>
                     )}
 
