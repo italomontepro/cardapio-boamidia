@@ -42,7 +42,7 @@ export default async function LinkPage({
         {/* Units list */}
         <div className="flex flex-col gap-3">
           {restaurantUnits.map((unit) => {
-            const message = `Olá! Vim pelo link e gostaria de fazer um pedido da unidade ${unit.name}.`
+            const message = 'Olá gostaria de fazer um pedido!'
 
             if (unit.whatsappNumber) {
               return (
