@@ -181,7 +181,12 @@ export function CardapioAccordion({ categories }: CardapioAccordionProps) {
                           <ChevronDown className="size-3" />
                         </Button>
                       </div>
-                      <ProductFormDialog mode="edit" categoryId={c.id} product={p} />
+                      <ProductFormDialog
+                        mode="edit"
+                        categoryId={c.id}
+                        allCategories={categories.map((cat) => ({ id: cat.id, name: cat.name }))}
+                        product={p}
+                      />
                       <ProductDeleteDialog id={p.id} name={p.name} />
                     </div>
                   </li>

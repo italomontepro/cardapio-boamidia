@@ -17,6 +17,15 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Checkbox } from '@/components/ui/checkbox'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+
+type CategoryOption = { id: string; name: string }
 
 type ProductForEdit = {
   id: string
@@ -30,12 +39,14 @@ type ProductForEdit = {
 type CreateProps = {
   mode: 'create'
   categoryId: string
+  allCategories?: never
   product?: never
 }
 
 type EditProps = {
   mode: 'edit'
   categoryId: string
+  allCategories: CategoryOption[]
   product: ProductForEdit
 }
 
@@ -51,9 +62,9 @@ export function ProductFormDialog(props: ProductFormDialogProps) {
   const isEdit = props.mode === 'edit'
   const product = isEdit ? props.product : null
 
-  // Preview: start with existing imageUrl, replace on new file selection
   const [previewUrl, setPreviewUrl] = useState<string | null>(product?.imageUrl ?? null)
   const [isFeatured, setIsFeatured] = useState(product?.isFeatured ?? false)
+  const [selectedCategoryId, setSelectedCategoryId] = useState(props.categoryId)
   const [errors, setErrors] = useState<Record<string, string[]>>({})
 
   function handleOpenChange(nextOpen: boolean) {
@@ -62,6 +73,7 @@ export function ProductFormDialog(props: ProductFormDialogProps) {
       setErrors({})
       setPreviewUrl(product?.imageUrl ?? null)
       setIsFeatured(product?.isFeatured ?? false)
+      setSelectedCategoryId(props.categoryId)
       formRef.current?.reset()
     }
   }
@@ -95,8 +107,9 @@ export function ProductFormDialog(props: ProductFormDialogProps) {
     const form = e.currentTarget
     const formData = new FormData(form)
 
-    // Checkbox value isn't auto-included in FormData — set it manually
     formData.set('isFeatured', isFeatured ? 'true' : 'false')
+    // Select component value isn't in FormData — set it manually
+    formData.set('categoryId', selectedCategoryId)
 
     startTransition(async () => {
       const result = await upsertProduct(formData)
@@ -112,7 +125,6 @@ export function ProductFormDialog(props: ProductFormDialogProps) {
     })
   }
 
-  // Format price for the edit default value: "29.90" → "29,90"
   const defaultPrice = product
     ? Number(product.price).toFixed(2).replace('.', ',')
     : ''
@@ -141,9 +153,31 @@ export function ProductFormDialog(props: ProductFormDialogProps) {
           </DialogHeader>
 
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-            {/* Hidden fields */}
-            <input type="hidden" name="categoryId" value={props.categoryId} />
+            {/* Hidden fields — categoryId is handled via state for edit mode */}
+            <input type="hidden" name="categoryId" value={selectedCategoryId} />
             {isEdit && <input type="hidden" name="id" value={product!.id} />}
+
+            {/* Category selector — edit mode only */}
+            {isEdit && props.allCategories.length > 0 && (
+              <div className="space-y-1">
+                <Label htmlFor="product-category">Categoria</Label>
+                <Select
+                  value={selectedCategoryId}
+                  onValueChange={(v) => { if (v) setSelectedCategoryId(v) }}
+                >
+                  <SelectTrigger id="product-category">
+                    <SelectValue placeholder="Selecione a categoria" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {props.allCategories.map((cat) => (
+                      <SelectItem key={cat.id} value={cat.id}>
+                        {cat.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            )}
 
             {/* Name */}
             <div className="space-y-1">
