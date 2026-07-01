@@ -8,17 +8,33 @@ export function buildOrderMessage(params: {
   restaurantName: string
   customerName: string // '' if omitted
   deliveryType: DeliveryType
+  neighborhood: string  // '' if omitted (delivery only)
+  addressNumber: string // '' if omitted (delivery only)
+  location: string      // '' if omitted (delivery only)
+  paymentMethod: string // '' if omitted
   items: CartItem[]
 }): string {
-  const { unitName, restaurantName, customerName, deliveryType, items } = params
+  const { unitName, restaurantName, customerName, deliveryType, neighborhood, addressNumber, location, paymentMethod, items } = params
   const lines: string[] = []
 
   lines.push(`Pedido - ${restaurantName} (${unitName})`)
-  if (customerName.trim()) lines.push(`Cliente: ${customerName.trim()}`)
-  if (deliveryType === 'pickup') lines.push('Retirar no local')
-  if (deliveryType === 'delivery') lines.push('Receber em casa')
-  lines.push('') // blank line before item list
+  lines.push('')
 
+  if (customerName.trim()) lines.push(`Nome: ${customerName.trim()}`)
+
+  if (deliveryType === 'delivery') {
+    lines.push('Entrega em domicílio')
+    if (neighborhood.trim()) lines.push(`Bairro: ${neighborhood.trim()}`)
+    if (addressNumber.trim()) lines.push(`N° da residência: ${addressNumber.trim()}`)
+    if (location.trim()) lines.push(`Localização: ${location.trim()}`)
+  } else if (deliveryType === 'pickup') {
+    lines.push('Retirar no local')
+  }
+
+  if (paymentMethod.trim()) lines.push(`Forma de pagamento: ${paymentMethod.trim()}`)
+
+  lines.push('')
+  lines.push('Pedido:')
   for (const item of items) {
     lines.push(`${item.qty}x ${item.name} - ${formatBRL(item.price * item.qty)}`)
     if (item.notes.trim()) lines.push(`  Obs: ${item.notes.trim()}`)

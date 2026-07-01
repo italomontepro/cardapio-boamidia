@@ -32,6 +32,10 @@ function main() {
     unitName: 'Centro',
     customerName: 'Ana',
     deliveryType: 'pickup',
+    neighborhood: '',
+    addressNumber: '',
+    location: '',
+    paymentMethod: '',
     items,
   })
 
@@ -39,7 +43,7 @@ function main() {
     msg.split('\n')[0] === 'Pedido - Boa Pizza (Centro)',
     'CART-04: first line is "Pedido - <restaurantName> (<unitName>)"',
   )
-  assert(msg.includes('Cliente: Ana'), 'CART-04: includes "Cliente: <name>" line')
+  assert(msg.includes('Nome: Ana'), 'CART-04: includes "Nome: <name>" line')
   assert(msg.includes('Retirar no local'), 'CART-04: includes "Retirar no local" for pickup')
   assert(msg.includes('2x Pizza Margherita - '), 'CART-04: item line format "qty x name - price"')
   assert(msg.includes('1x Refrigerante - '), 'CART-04: second item line format')
@@ -55,15 +59,19 @@ function main() {
     'CART-04: last non-empty line is "Subtotal: <formatBRL(sum)>"',
   )
 
-  // Test 2: customerName '' -> no Cliente: line
+  // Test 2: customerName '' -> no Nome: line
   const msgNoName = buildOrderMessage({
     restaurantName: 'Boa Pizza',
     unitName: 'Centro',
     customerName: '',
     deliveryType: 'pickup',
+    neighborhood: '',
+    addressNumber: '',
+    location: '',
+    paymentMethod: '',
     items,
   })
-  assert(!msgNoName.includes('Cliente:'), 'CART-04: empty customerName omits "Cliente:" line')
+  assert(!msgNoName.includes('Nome:'), 'CART-04: empty customerName omits "Nome:" line')
 
   // Test 3: deliveryType null -> neither pickup nor delivery line
   const msgNoDelivery = buildOrderMessage({
@@ -71,6 +79,10 @@ function main() {
     unitName: 'Centro',
     customerName: 'Ana',
     deliveryType: null,
+    neighborhood: '',
+    addressNumber: '',
+    location: '',
+    paymentMethod: '',
     items,
   })
   assert(
@@ -78,15 +90,22 @@ function main() {
     'CART-04: deliveryType null omits both delivery-type lines',
   )
 
-  // Test 4: deliveryType 'delivery' -> "Receber em casa" present
+  // Test 4: deliveryType 'delivery' -> "Receber em casa" + address fields present
   const msgDelivery = buildOrderMessage({
     restaurantName: 'Boa Pizza',
     unitName: 'Centro',
     customerName: 'Ana',
     deliveryType: 'delivery',
+    neighborhood: 'Jardins',
+    addressNumber: '42',
+    location: 'https://maps.google.com/example',
+    paymentMethod: 'Pix',
     items,
   })
   assert(msgDelivery.includes('Receber em casa'), 'CART-04: deliveryType "delivery" includes "Receber em casa"')
+  assert(msgDelivery.includes('Bairro: Jardins'), 'CART-04: neighborhood included in delivery message')
+  assert(msgDelivery.includes('N° da residência: 42'), 'CART-04: addressNumber included in delivery message')
+  assert(msgDelivery.includes('Forma de pagamento: Pix'), 'CART-04: paymentMethod included in message')
 
   // -------------------------------------------------------------------------
   // CART-05: URL encoding
@@ -108,6 +127,10 @@ function main() {
     unitName: 'Centro',
     customerName: 'Ana',
     deliveryType: 'delivery',
+    neighborhood: 'Centro',
+    addressNumber: '10',
+    location: '',
+    paymentMethod: 'Dinheiro',
     items: accentedItems,
   })
   const roundTripUrl = buildWhatsAppUrl('+5511999999999', roundTripMessage)
